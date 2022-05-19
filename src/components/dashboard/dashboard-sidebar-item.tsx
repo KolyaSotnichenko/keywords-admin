@@ -38,6 +38,8 @@ export const DashboardSidebarItem: FC<DashboardSidebarItemProps> = (props) => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  console.log(openProp)
+
   let paddingLeft = 24;
 
   if (depth > 0) {
@@ -145,13 +147,13 @@ export const DashboardSidebarItem: FC<DashboardSidebarItemProps> = (props) => {
             textAlign: 'left',
             textTransform: 'none',
             width: '40%',
-            
+            filter: 'drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5))'
             
           }}
         >
           <Box 
             sx={{ 
-              flexGrow: 0,
+              flexGrow: 1,
             }}
           >
             {title}

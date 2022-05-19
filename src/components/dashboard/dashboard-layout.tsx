@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import type { FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
+import { CSSObject, styled, Theme } from '@mui/material/styles';
 // import { DashboardNavbar } from './dashboard-navbar';
 import { DashboardSidebar } from './dashboard-sidebar';
 import { Box } from '@mui/material';
+import { DashboardNavbar } from './dashboard-navbar';
 
 interface DashboardLayoutProps {
   children?: ReactNode;
@@ -24,7 +25,11 @@ const DashboardLayoutRoot = styled('div')(
 
 export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
   const { children } = props;
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleChange = (newState: boolean) => {
+    setIsOpen(newState)
+  }
 
   return (
     <>
@@ -42,8 +47,9 @@ export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
       </DashboardLayoutRoot>
       {/* <DashboardNavbar onOpenSidebar={(): void => setIsSidebarOpen(true)} /> */}
       <DashboardSidebar
-        onClose={(): void => setIsSidebarOpen(false)}
-        open={isSidebarOpen}
+        onClose={(): void => setIsOpen(false)}
+        open={isOpen}
+        stateSidebar={handleChange}
       />
     </>
   );

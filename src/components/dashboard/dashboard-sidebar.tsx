@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'react-i18next';
-import { Box, Button, Chip, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Chip, CSSObject, Divider, styled, Typography, useMediaQuery } from '@mui/material';
 import type { Theme } from '@mui/material';
 // import { Calendar as CalendarIcon } from '../../icons/calendar';
 // import { Cash as CashIcon } from '../../icons/cash';
@@ -23,6 +23,8 @@ import { Home as HomeIcon } from '../../icons/home';
 // import { OfficeBuilding as OfficeBuildingIcon } from '../../icons/office-building';
 // import { ReceiptTax as ReceiptTaxIcon } from '../../icons/receipt-tax';
 import { Selector as SelectorIcon } from '../../icons/selector';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 // import { Share as ShareIcon } from '../../icons/share';
 // import { ShoppingBag as ShoppingBagIcon } from '../../icons/shopping-bag';
 // import { ShoppingCart as ShoppingCartIcon } from '../../icons/shopping-cart';
@@ -35,12 +37,17 @@ import { Scrollbar } from '../scrollbar';
 import { DashboardSidebarSection } from './dashboard-sidebar-section';
 import { OrganizationPopover } from './organization-popover';
 
+
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+
+import MuiDrawer from '@mui/material/Drawer';
+
 import logo from '../../../public/logo.png'
-import arrowLeft from '../../../public/arrowLeft.png'
 
 interface DashboardSidebarProps {
   onClose: () => void;
   open: boolean;
+  stateSidebar: (event: boolean) => boolean;
 }
 
 interface Item {
@@ -56,6 +63,68 @@ interface Section {
   items: Item[];
 }
 
+const drawerWidth = 280;
+
+const openedMixin = (theme: Theme): CSSObject => ({
+  width: drawerWidth,
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: 'hidden',
+});
+
+const closedMixin = (theme: Theme): CSSObject => ({
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up('sm')]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
+
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+      ...openedMixin(theme),
+      '& .MuiDrawer-paper': openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      '& .MuiDrawer-paper': closedMixin(theme),
+    }),
+  }),
+);
+
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;
+}
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(['width', 'margin'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
 const getSections = (t: TFunction): Section[] => [
   {
     title: '',
@@ -63,259 +132,29 @@ const getSections = (t: TFunction): Section[] => [
       {
         title: t('Overview'),
         path: '/dashboard',
-        icon: <HomeIcon fontSize="small" />
+        icon: <HomeIcon fontSize="small" />,
       },
       {
         title: t('Results'),
-        path: '/dashboard/analytics',
+        path: '/dashboard/results',
         icon: <ChartBarIcon fontSize="small" />
       },
       {
         title: t('Complaints'),
-        path: '/dashboard/finance',
+        path: '/dashboard/complaints',
         icon: <ChartPieIcon fontSize="small" />
       },
       {
         title: t('Settings'),
-        path: '/dashboard/finance',
+        path: '/dashboard/settings',
         icon: <TruckIcon fontSize="small" />
       },
-      // {
-      //   title: t('Logistics'),
-      //   path: '/dashboard/logistics',
-      //   icon: <TruckIcon fontSize="small" />,
-      //   chip: <Chip
-      //     color="secondary"
-      //     label={(
-      //       <Typography
-      //         sx={{
-      //           fontSize: '10px',
-      //           fontWeight: '600'
-      //         }}
-      //       >
-      //         NEW
-      //       </Typography>
-      //     )}
-      //     size="small"
-      //   />
-      // },
-      // {
-      //   title: t('Account'),
-      //   path: '/dashboard/account',
-      //   icon: <UserCircleIcon fontSize="small" />
-      // }
     ]
   },
-  // {
-  //   title: t('Management'),
-  //   items: [
-  //     {
-  //       title: t('Customers'),
-  //       path: '/dashboard/customers',
-  //       icon: <UsersIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: t('List'),
-  //           path: '/dashboard/customers'
-  //         },
-  //         {
-  //           title: t('Details'),
-  //           path: '/dashboard/customers/1'
-  //         },
-  //         {
-  //           title: t('Edit'),
-  //           path: '/dashboard/customers/1/edit'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: t('Products'),
-  //       path: '/dashboard/products',
-  //       icon: <ShoppingBagIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: t('List'),
-  //           path: '/dashboard/products'
-  //         },
-  //         {
-  //           title: t('Create'),
-  //           path: '/dashboard/products/new'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: t('Orders'),
-  //       icon: <ShoppingCartIcon fontSize="small" />,
-  //       path: '/dashboard/orders',
-  //       children: [
-  //         {
-  //           title: t('List'),
-  //           path: '/dashboard/orders'
-  //         },
-  //         {
-  //           title: t('Details'),
-  //           path: '/dashboard/orders/1'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: t('Invoices'),
-  //       path: '/dashboard/invoices',
-  //       icon: <ReceiptTaxIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: t('List'),
-  //           path: '/dashboard/invoices'
-  //         },
-  //         {
-  //           title: t('Details'),
-  //           path: '/dashboard/invoices/1'
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: t('Platforms'),
-  //   items: [
-  //     {
-  //       title: t('Job Listings'),
-  //       path: '/dashboard/jobs',
-  //       icon: <OfficeBuildingIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: t('Browse'),
-  //           path: '/dashboard/jobs'
-  //         },
-  //         {
-  //           title: t('Details'),
-  //           path: '/dashboard/jobs/companies/1'
-  //         },
-  //         {
-  //           title: t('Create'),
-  //           path: '/dashboard/jobs/new'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: t('Social Media'),
-  //       path: '/dashboard/social',
-  //       icon: <ShareIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: t('Profile'),
-  //           path: '/dashboard/social/profile'
-  //         },
-  //         {
-  //           title: t('Feed'),
-  //           path: '/dashboard/social/feed'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: t('Blog'),
-  //       path: '/blog',
-  //       icon: <NewspaperIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: t('Post List'),
-  //           path: '/blog'
-  //         },
-  //         {
-  //           title: t('Post Details'),
-  //           path: '/blog/1'
-  //         },
-  //         {
-  //           title: t('Post Create'),
-  //           path: '/blog/new'
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: t('Apps'),
-  //   items: [
-  //     {
-  //       title: t('Kanban'),
-  //       path: '/dashboard/kanban',
-  //       icon: <ClipboardListIcon fontSize="small" />
-  //     },
-  //     {
-  //       title: t('Mail'),
-  //       path: '/dashboard/mail',
-  //       icon: <MailIcon fontSize="small" />
-  //     },
-  //     {
-  //       title: t('Chat'),
-  //       path: '/dashboard/chat',
-  //       icon: <ChatAlt2Icon fontSize="small" />
-  //     },
-  //     {
-  //       title: t('Calendar'),
-  //       path: '/dashboard/calendar',
-  //       icon: <CalendarIcon fontSize="small" />
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: t('Pages'),
-  //   items: [
-  //     {
-  //       title: t('Auth'),
-  //       path: '/authentication',
-  //       icon: <LockClosedIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: t('Register'),
-  //           path: '/authentication/register?disableGuard=true'
-  //         },
-  //         {
-  //           title: t('Login'),
-  //           path: '/authentication/login?disableGuard=true'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: t('Pricing'),
-  //       path: '/dashboard/pricing',
-  //       icon: <CreditCardIcon fontSize="small" />
-  //     },
-  //     {
-  //       title: t('Checkout'),
-  //       path: '/checkout',
-  //       icon: <CashIcon fontSize="small" />
-  //     },
-  //     {
-  //       title: t('Contact'),
-  //       path: '/contact',
-  //       icon: <MailOpenIcon fontSize="small" />
-  //     },
-  //     {
-  //       title: t('Error'),
-  //       path: '/error',
-  //       icon: <XCircleIcon fontSize="small" />,
-  //       children: [
-  //         {
-  //           title: '401',
-  //           path: '/401'
-  //         },
-  //         {
-  //           title: '404',
-  //           path: '/404'
-  //         },
-  //         {
-  //           title: '500',
-  //           path: '/500'
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
 ];
 
 export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
-  const { onClose, open } = props;
+  const { onClose, open, stateSidebar } = props;
   const router = useRouter();
   const { t } = useTranslation();
   const lgUp = useMediaQuery(
@@ -333,9 +172,9 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
       return;
     }
 
-    if (open) {
-      onClose?.();
-    }
+    // if (open) {
+    //   onClose?.();
+    // }
   };
 
   useEffect(
@@ -350,6 +189,19 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
 
   const handleCloseOrganizationsPopover = (): void => {
     setOpenOrganizationsPopover(false);
+  };
+
+  const [isSidebarOpened, setIsSidebarOpened] = useState<boolean>(true)
+  
+
+  const handleDrawerOpen = () => {
+    setIsSidebarOpened(true);
+    stateSidebar(true)
+  };
+
+  const handleDrawerClose = () => {
+    setIsSidebarOpened(false);
+    stateSidebar(false)
   };
 
   const content = (
@@ -370,7 +222,8 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
           }}
         >
           <div>
-            <Box
+            {isSidebarOpened ? (
+              <Box
               sx={{
                 display: 'flex',
                 justifyContent: 'end',
@@ -379,6 +232,7 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
               }}
             >
               <Box
+                onClick={handleDrawerClose}
                 sx={{
                   borderRadius: '7px',
                   width: '29px',
@@ -390,95 +244,141 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
               >
                 <Box
                   sx={{
-                    pt: '3px'
+                    pt: '2px'
                   }}
                 >
-                  <NextLink
-                    href='#'
-                    passHref
-                  >
-                    <Image src={arrowLeft} width={14} height={14} />
-                  </NextLink>
+                  <Box>
+                   <ChevronLeftIcon />
+                  </Box>
                 </Box>
               </Box>
               
             </Box>
-            <Box sx={{ p: 3, textAlign: 'center' }}>
-              <NextLink
-                href="/"
-                passHref
-              >
-                <a>
-                  {/* <Logo
-                    sx={{
-                      height: 42,
-                      width: 42
-                    }}
-                  /> */}
-                  <Image 
-                    src={logo}
-                    width={138}
-                    height={119}
-                    alt="Logo" 
-                  />
-                </a>
-              </NextLink>
-            </Box>
-            <Box sx={{ px: 2 }}>
+            ) : (
               <Box
-                onClick={handleOpenOrganizationsPopover}
-                ref={organizationsRef}
                 sx={{
-                  alignItems: 'center',
-                  background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(104, 79, 255, 0) 100%);',
-                  cursor: 'pointer',
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  px: 3,
-                  py: '11px',
-                  borderRadius: 1,
-                  textAlign: 'center'
+                  justifyContent: 'end',
+                  pt: 2,
+                  pr: 1
                 }}
               >
-                <div></div>
-                <div>
-                  <Typography
-                    color="inherit"
-                    variant="subtitle1"
-                  >
-                    Acme Inc
-                  </Typography>
+                <Box
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    borderRadius: '7px',
+                    width: '29px',
+                    height: '27px',
+                    background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                >
                   <Box
                     sx={{
-                      display: 'flex'
+                      pt: '2px'
                     }}
                   >
+                    <Box>
+                    <ChevronRightIcon />
+                    </Box>
+                  </Box>
+                </Box>
+                
+              </Box>
+            )}
+            
+            {isSidebarOpened ? (
+              <Box sx={{ p: 3, textAlign: 'center' }}>
+                <NextLink
+                  href="/"
+                  passHref
+                >
+                  <a>
+                    <Image 
+                      src={logo}
+                      width={138}
+                      height={119}
+                      alt="Logo" 
+                    />
+                  </a>
+                </NextLink>
+              </Box>
+            ) : (
+              <Box sx={{ p: 1, mt: 2, textAlign: 'center' }}>
+                <NextLink
+                  href="/"
+                  passHref
+                >
+                  <a>
+                    <Image 
+                      src={logo}
+                      width={104}
+                      height={91}
+                      alt="Logo" 
+                    />
+                  </a>
+                </NextLink>
+              </Box>
+            )}
+            {isSidebarOpened && (
+              <Box sx={{ px: 2 }}>
+                <Box
+                  onClick={handleOpenOrganizationsPopover}
+                  ref={organizationsRef}
+                  sx={{
+                    alignItems: 'center',
+                    background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(104, 79, 255, 0) 100%);',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    px: 3,
+                    py: '11px',
+                    borderRadius: 1,
+                    textAlign: 'center'
+                  }}
+                >
+                  <div></div>
+                  <div>
                     <Typography
                       color="inherit"
-                      variant="body2"
+                      variant="subtitle1"
+                    >
+                      Acme Inc
+                    </Typography>
+                    <Box
                       sx={{
-                        mr: '5px'
+                        display: 'flex'
                       }}
                     >
-                      Your tier :
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      variant="body2"
-                    >
-                      Premium
-                    </Typography>
-                  </Box>
-                </div>
-                <SelectorIcon
-                  sx={{
-                    color: 'inherit',
-                    width: 14,
-                    height: 14
-                  }}
-                />
+                      <Typography
+                        color="inherit"
+                        variant="body2"
+                        sx={{
+                          mr: '5px'
+                        }}
+                      >
+                        Your tier :
+                      </Typography>
+                      <Typography
+                        color="secondary"
+                        variant="body2"
+                      >
+                        Premium
+                      </Typography>
+                    </Box>
+                  </div>
+                  <SelectorIcon
+                    sx={{
+                      color: 'inherit',
+                      width: 14,
+                      height: 14
+                    }}
+                  />
+                </Box>
               </Box>
-            </Box>
+            )}
+            
           </div>
           <Divider
             sx={{
@@ -500,43 +400,45 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
                 {...section}
               />
             ))}
+            <Divider
+              sx={{
+                borderColor: '#2D3748'  // dark divider
+              }}
+            />
           </Box>
-          <Divider
-            sx={{
-              borderColor: '#2D3748'  // dark divider
-            }}
-          />
-          <Box sx={{ p: 2, pt: 10, pb: 5, textAlign: 'center' }}>
-            <Typography
-              color="neutral.100"
-              variant="h6"
-            >
-              {t('Need Help?')}
-            </Typography>
-            <Typography
-              color="inherit"
-              variant="body2"
-            >
-              {t('Check our docs')}
-            </Typography>
-            <NextLink
-              href="/docs/welcome"
-              passHref
-            >
-              <Button
-                component="a"
-                fullWidth
-                sx={{ 
-                  mt: 2,
-                  background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
-                  color: '#ffffff'
-                }}
-                variant="contained"
+          {isSidebarOpened && (
+            <Box sx={{ p: 2, pt: 10, pb: 5, textAlign: 'center' }}>
+              <Typography
+                color="neutral.100"
+                variant="h6"
               >
-                {t('Documentation')}
-              </Button>
-            </NextLink>
-          </Box>
+                {t('Need Help?')}
+              </Typography>
+              <Typography
+                color="inherit"
+                variant="body2"
+              >
+                {t('Check our docs')}
+              </Typography>
+              <NextLink
+                href="/docs/welcome"
+                passHref
+              >
+                <Button
+                  component="a"
+                  fullWidth
+                  sx={{ 
+                    mt: 2,
+                    background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
+                    color: '#ffffff'
+                  }}
+                  variant="contained"
+                >
+                  {t('Documentation')}
+                </Button>
+              </NextLink>
+            </Box>
+          )}
         </Box>
       </Scrollbar>
       <OrganizationPopover
@@ -549,43 +451,48 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
 
   if (lgUp) {
     return (
-      <Drawer
-        anchor="left"
-        open
-        PaperProps={{
-          sx: {
-            backgroundColor: 'neutral.900',
-            borderRightColor: 'divider',
-            borderRightStyle: 'solid',
-            borderRightWidth: (theme) => theme.palette.mode === 'dark' ? 1 : 0,
-            color: '#FFFFFF',
-            width: 280
-          }
-        }}
-        variant="permanent"
-      >
-        {content}
-      </Drawer>
+      <>
+        <AppBar position='fixed' open={isSidebarOpened}>
+        <Drawer
+          anchor="left"
+          open={isSidebarOpened}
+          PaperProps={{
+            sx: {
+              backgroundColor: 'neutral.900',
+              borderRightColor: 'divider',
+              borderRightStyle: 'solid',
+              borderRightWidth: (theme) => theme.palette.mode === 'dark' ? 1 : 0,
+              color: '#FFFFFF',
+              width: 280
+            }
+          }}
+          variant="permanent"
+        >
+          {content}
+        </Drawer>
+        </AppBar>
+      </>
     );
   }
 
   return (
-    <Drawer
-      anchor="left"
-      onClose={onClose}
-      open={open}
-      PaperProps={{
-        sx: {
-          backgroundColor: 'neutral.900',
-          color: '#FFFFFF',
-          width: 280
-        }
-      }}
-      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
-      variant="temporary"
-    >
-      {content}
-    </Drawer>
+    <>
+      <Drawer
+        anchor="left"
+        open={isSidebarOpened}
+        PaperProps={{
+          sx: {
+            backgroundColor: 'neutral.900',
+            color: '#FFFFFF',
+            width: 280
+          }
+        }}
+        sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+        variant="permanent"
+      >
+        {content}
+      </Drawer>
+    </>
   );
 };
 

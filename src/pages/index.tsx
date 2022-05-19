@@ -10,6 +10,7 @@ import { HomeDesigners } from '../components/home/home-designers';
 import { HomeFeatures } from '../components/home/home-features';
 import { HomeTestimonials } from '../components/home/home-testimonials';
 import { gtm } from '../lib/gtm';
+import Overview from './dashboard';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
         </title>
       </Head>
       <main>
-        <HomeHero />
+        {/* <HomeHero />
         <Divider />
         <HomeDevelopers />
         <Divider />
@@ -32,7 +33,8 @@ const Home: NextPage = () => {
         <HomeTestimonials />
         <HomeFeatures />
         <Divider />
-        <HomeClients />
+        <HomeClients /> */}
+        <Overview />
       </main>
     </>
   );
