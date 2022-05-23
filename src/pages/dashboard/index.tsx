@@ -36,6 +36,7 @@ import { gtm } from '../../lib/gtm';
 
 import { Home as HomeIcon } from '../../icons/home';
 import KeywordsByCountry from 'src/components/dashboard/keywordsbycountry/map';
+import Charts from 'src/components/dashboard/keywordsbycountry/charts';
 // import eyeIcon from '../../eye.png'
 
 const Overview: NextPage = () => {
@@ -164,6 +165,7 @@ const Overview: NextPage = () => {
               xs={12}
             >
               <KeywordsByCountry />
+              <Charts />
             </Grid>
           </Grid>
         </Container>

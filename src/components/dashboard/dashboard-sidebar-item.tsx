@@ -38,8 +38,6 @@ export const DashboardSidebarItem: FC<DashboardSidebarItemProps> = (props) => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  console.log(openProp)
-
   let paddingLeft = 24;
 
   if (depth > 0) {
@@ -141,7 +139,7 @@ export const DashboardSidebarItem: FC<DashboardSidebarItemProps> = (props) => {
             
             color: active ? 'secondary.main' : 'inherit',
             fontWeight: active && 'fontWeightBold',
-            justifyContent: 'start',
+            justifyContent: title === undefined ? 'center' : 'start',
             pl: 0,
             pr: 0,
             textAlign: 'left',
@@ -151,13 +149,15 @@ export const DashboardSidebarItem: FC<DashboardSidebarItemProps> = (props) => {
             
           }}
         >
-          <Box 
-            sx={{ 
-              flexGrow: 1,
-            }}
-          >
-            {title}
-          </Box>
+          {title !== undefined && (
+            <Box 
+              sx={{ 
+                flexGrow: 1,
+              }}
+            >
+              {title}
+            </Box>
+            )}
           {info}
         </Button>
         

@@ -25,7 +25,7 @@ const Home: NextPage = () => {
         </title>
       </Head>
       <main>
-        {/* <HomeHero />
+        <HomeHero />
         <Divider />
         <HomeDevelopers />
         <Divider />
@@ -33,8 +33,7 @@ const Home: NextPage = () => {
         <HomeTestimonials />
         <HomeFeatures />
         <Divider />
-        <HomeClients /> */}
-        <Overview />
+        <HomeClients />
       </main>
     </>
   );

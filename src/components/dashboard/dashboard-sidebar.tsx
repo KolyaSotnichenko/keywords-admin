@@ -51,7 +51,7 @@ interface DashboardSidebarProps {
 }
 
 interface Item {
-  title: string;
+  title?: string;
   children?: Item[];
   chip?: ReactNode;
   icon?: ReactNode;
@@ -153,6 +153,34 @@ const getSections = (t: TFunction): Section[] => [
   },
 ];
 
+const getSections2 = (t: TFunction): Section[] => [
+  {
+    title: '',
+    items: [
+      {
+        // title: t('Overview'),
+        path: '/dashboard',
+        icon: <HomeIcon fontSize="small" />,
+      },
+      {
+        // title: t('Results'),
+        path: '/dashboard/results',
+        icon: <ChartBarIcon fontSize="small" />
+      },
+      {
+        // title: t('Complaints'),
+        path: '/dashboard/complaints',
+        icon: <ChartPieIcon fontSize="small" />
+      },
+      {
+        // title: t('Settings'),
+        path: '/dashboard/settings',
+        icon: <TruckIcon fontSize="small" />
+      },
+    ]
+  },
+];
+
 export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
   const { onClose, open, stateSidebar } = props;
   const router = useRouter();
@@ -164,6 +192,7 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
     }
   );
   const sections = useMemo(() => getSections(t), [t]);
+  const sections2 = useMemo(() => getSections2(t), [t])
   const organizationsRef = useRef<HTMLButtonElement | null>(null);
   const [openOrganizationsPopover, setOpenOrganizationsPopover] = useState<boolean>(false);
 
@@ -386,26 +415,51 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
               my: 3
             }}
           />
-          <Box sx={{ flexGrow: 1 }}>
-            {sections.map((section) => (
-              <DashboardSidebarSection
-                key={section.title}
-                path={router.asPath}
+          {isSidebarOpened && (
+            <Box sx={{ flexGrow: 1 }}>
+              {sections.map((section) => (
+                <DashboardSidebarSection
+                  key={section.title}
+                  path={router.asPath}
+                  sx={{
+                    mt: 2,
+                    '& + &': {
+                      mt: 2
+                    }
+                  }}
+                  {...section}
+                />
+              ))}
+              <Divider
                 sx={{
-                  mt: 2,
-                  '& + &': {
-                    mt: 2
-                  }
+                  borderColor: '#2D3748'  // dark divider
                 }}
-                {...section}
               />
-            ))}
-            <Divider
-              sx={{
-                borderColor: '#2D3748'  // dark divider
-              }}
-            />
-          </Box>
+            </Box>
+          )}
+          {!isSidebarOpened && (
+            <Box sx={{ flexGrow: 1 }}>
+              {sections2.map((section) => (
+                <DashboardSidebarSection
+                  key={section.title}
+                  path={router.asPath}
+                  sx={{
+                    mt: 2,
+                    '& + &': {
+                      mt: 2
+                    }
+                  }}
+                  {...section}
+                />
+              ))}
+              <Divider
+                sx={{
+                  borderColor: '#2D3748'  // dark divider
+                }}
+              />
+            </Box>
+          )}
+          
           {isSidebarOpened && (
             <Box sx={{ p: 2, pt: 10, pb: 5, textAlign: 'center' }}>
               <Typography
