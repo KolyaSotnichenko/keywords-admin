@@ -110,7 +110,7 @@ const Overview: NextPage = () => {
                     position: 'relative',
                   }}
                 >
-                  <Box 
+                  {/* <Box 
                     sx={{
                       position: 'absolute',
                       zIndex: 2,
@@ -119,8 +119,7 @@ const Overview: NextPage = () => {
                     }}
                   >
                     <HomeIcon fontSize='large' />
-                    {/* <Image src={eyeIcon} width={44} height={45} /> */}
-                  </Box>
+                  </Box> */}
                   <Select
                     MenuProps={{
                       style: {

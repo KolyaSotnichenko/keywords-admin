@@ -72,7 +72,6 @@ const Complaints: NextPage = () => {
               >
                 <Grid item>
                   <Box sx={{display: 'flex', alignItems: 'center'}}>
-                    {/* <HomeIcon fontSize="large" color='secondary' /> */}
                     <ChartPieIcon fontSize="large" color='secondary' />
                     <Typography variant="h4" color="secondary">
                       Complaints
@@ -94,7 +93,7 @@ const Complaints: NextPage = () => {
                 <Card sx={{p: 5, mt: 5, background: '#222543', borderRadius: '30px'}}>
                 <TableContainer component={Paper}>
                   <Table sx={{ minWidth: 650, border: '1px solid white' }} size="small" aria-label="a dense table">
-                    <TableHead>
+                    <TableHead sx={{border: '1px solid white'}}>
                       <TableRow sx={{border: '1px solid white'}}>
                         <TableCell sx={{background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);'}}><Typography sx={{color: '#ffffff', fontWeight: 700}}>DOMAIN</Typography></TableCell>
                         <TableCell sx={{background: 'linear-gradient(180deg, #3C90FF 0%, #BE35FF 100%);'}} align="left"><Typography sx={{color: 'secondary.main', fontWeight: 700}}>PROJECT</Typography></TableCell>
@@ -161,7 +160,16 @@ const Complaints: NextPage = () => {
                       sx={{
                         width: '83px',
                         height: '35px',
-                        m: '0 10px'
+                        m: '0 10px',
+                        '& .css-9vjw2o-MuiInputBase-root-MuiOutlinedInput-root': {
+                          height: '35px',
+                        },
+                        '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                          border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                          borderRadius: '7px',
+                          borderImageSlice: 1,
+                          borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                        }
                       }}
                     >
                       <TextField
@@ -233,7 +241,16 @@ const Complaints: NextPage = () => {
                       display: 'flex',
                       flexDirection: 'row',
                       alignItems: 'center',
-                      m: '0 -10px'
+                      m: '0 -10px',
+                      '& .css-9vjw2o-MuiInputBase-root-MuiOutlinedInput-root': {
+                        height: '35px',
+                      },
+                      '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                        border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                        borderRadius: '7px',
+                        borderImageSlice: 1,
+                        borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                      }
                     }}
                   >
                     <Box

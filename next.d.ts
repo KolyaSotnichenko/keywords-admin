@@ -6,3 +6,8 @@ declare module 'next' {
     getLayout?: (page: ReactElement) => ReactNode;
   }
 }
+
+declare module "path/*.png" {
+  const value: any,
+  export default value
+}
