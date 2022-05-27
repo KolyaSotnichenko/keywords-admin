@@ -1,4 +1,4 @@
-import { Grid, Typography, Select, MenuItem, Card, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Switch } from "@mui/material";
+import { Grid, Typography, Select, MenuItem, Card, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Switch, Tooltip } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { NextPage } from "next";
 import Image from "next/image";
@@ -1295,36 +1295,48 @@ const Settings: NextPage = () => {
                                     </Box>
                                   </TableCell>
                                   <TableCell sx={{ background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }} align="right">
-                                    <Box
-                                      sx={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center',
-                                        margin: '0 -5px'
+                                    <Tooltip
+                                      title="text text text text" 
+                                      placement="top-start"
+                                      componentsProps={{
+                                        tooltip: {
+                                          sx: {
+                                            background: 'linear-gradient(180deg, rgba(69, 140, 255, 0.5) 5.73%, rgba(104, 79, 255, 0.51) 82.81%);'
+                                          }
+                                        }
                                       }}
                                     >
                                       <Box
                                         sx={{
-                                          margin: '0 5px'
+                                          display: 'flex',
+                                          flexDirection: 'row',
+                                          alignItems: 'center',
+                                          margin: '0 -5px'
                                         }}
                                       >
-                                        <Image src={pencilIcon} width={22} height={19} />
-                                      </Box>
-                                      <Box
-                                        sx={{
-                                          margin: '0 5px'
-                                        }}
-                                      >
-                                        <Typography
+                                        <Box
                                           sx={{
-                                            color: '#ffffff',
-                                            fontWeight: 700
+                                            margin: '0 5px'
                                           }}
                                         >
-                                          NOTES
-                                        </Typography>
+                                          <Image src={pencilIcon} width={22} height={19} />
+                                        </Box>
+                                        <Box
+                                          sx={{
+                                            margin: '0 5px'
+                                          }}
+                                        >
+                                          <Typography
+                                            sx={{
+                                              color: '#ffffff',
+                                              fontWeight: 700
+                                            }}
+                                          >
+                                            NOTES
+                                          </Typography>
+                                        </Box>
                                       </Box>
-                                    </Box>
+                                    </Tooltip>
                                   </TableCell>
                                 </TableRow>
                               </TableHead>
@@ -1339,7 +1351,23 @@ const Settings: NextPage = () => {
                                     </TableCell>
                                     <TableCell align="left">{row.geo}</TableCell>
                                     <TableCell align="left">{row.project}</TableCell>
-                                    <TableCell align="left">{row.notes}</TableCell>
+                                    <TableCell align="left">
+                                      <Tooltip 
+                                        title="text text text text" 
+                                        placement="top-start"
+                                        componentsProps={{
+                                          tooltip: {
+                                            sx: {
+                                              background: 'linear-gradient(180deg, rgba(69, 140, 255, 0.5) 5.73%, rgba(104, 79, 255, 0.51) 82.81%);'
+                                            }
+                                          }
+                                        }}
+                                      >
+                                        <Typography>
+                                          {row.notes}
+                                        </Typography>
+                                      </Tooltip>
+                                    </TableCell>
                                   </TableRow>
                                 ))}
                               </TableBody>
