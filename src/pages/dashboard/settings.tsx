@@ -1,4 +1,4 @@
-import { Grid, Typography, Select, MenuItem, Card, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Grid, Typography, Select, MenuItem, Card, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Switch } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { NextPage } from "next";
 import Image from "next/image";
@@ -13,7 +13,11 @@ import exelIcon from '../../../public/exel.png'
 import geoIcon from '../../../public/geo.png'
 import addIcon from '../../../public/add.png'
 import deleteIcon from '../../../public/delete.png'
+import pencilIcon from '../../../public/pencil.png'
+import worldIcon from '../../../public/world.png'
+import documentIcon from '../../../public/document.png'
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useState } from "react";
 
 
 function createData(
@@ -32,7 +36,31 @@ const rows = [
   createData('Project', 123, 'geo',),
 ]
 
+function createComplaintsData(
+  website: string,
+  geo: string,
+  project: string,
+  notes: string
+) {
+  return {website, geo, project, notes}
+}
+
+const rowsComplaints = [
+  createComplaintsData('Website', 'geo', 'project', 'notes'),
+  createComplaintsData('Website', 'geo', 'project', 'notes'),
+  createComplaintsData('Website', 'geo', 'project', 'notes'),
+  createComplaintsData('Website', 'geo', 'project', 'notes'),
+]
+
 const Settings: NextPage = () => {
+
+  const [activeSettings, setActiveSettings] = useState<boolean>(true)
+  const [checked, setChecked] = useState<boolean>(true)
+
+  const switchHandler = (event) => {
+    setChecked(event.target.checked)
+  }
+
     return (
         <>
           <Box
@@ -88,12 +116,17 @@ const Settings: NextPage = () => {
                   md={12}
                   xs={12}
                 >
-                  <Card sx={{display: 'flex',justifyContent: 'space-between', p: 5, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px'}}>
+                  <Card sx={{ height: '75px',display: 'flex',justifyContent: 'space-between', mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px'}}>
                     <Box
+                      onClick={() => setActiveSettings(false)}
                       sx={{
                         flex: 1,
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        p: 2,
+                        cursor: 'pointer',
+                        background: !activeSettings ? 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)' : 'none',
+                        boxShadow: !activeSettings ? '3.24394px 3.24394px 3.24394px rgba(0, 0, 0, 0.5)' : 'none'
                       }}
                     >
                       <Box
@@ -115,8 +148,10 @@ const Settings: NextPage = () => {
                           }}
                         >
                            <Typography
+                              color={!activeSettings ? 'secondary.main' : '#ffffff'}
                               sx={{
-                                fontSize: '29px'
+                                fontSize: '29px',
+                                
                               }}
                             >
                               Complaints
@@ -125,10 +160,15 @@ const Settings: NextPage = () => {
                       </Box>
                     </Box>
                     <Box
+                    onClick={() => setActiveSettings(true)}
                       sx={{
                         flex: 1,
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        p: 2,
+                        cursor: 'pointer',
+                        background: activeSettings ? 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)' : 'none',
+                        boxShadow: activeSettings ? '3.24394px 3.24394px 3.24394px rgba(0, 0, 0, 0.5)' : 'none'
                       }}
                     >
                       <Box
@@ -139,7 +179,7 @@ const Settings: NextPage = () => {
                       >
                         <Box
                           sx={{
-                            margin: '0 5px'
+                            margin: '0 5px',
                           }}
                         >
                           <Image src={keyIcon} width={36} height={38} />
@@ -150,8 +190,9 @@ const Settings: NextPage = () => {
                           }}
                         >
                           <Typography
+                            color={activeSettings ? 'secondary.main' : '#ffffff'}
                             sx={{
-                              fontSize: '29px'
+                              fontSize: '29px',
                             }}
                           >
                             Settings
@@ -160,37 +201,177 @@ const Settings: NextPage = () => {
                       </Box>
                     </Box>
                   </Card>
-                  <Card sx={{justifyContent: 'space-between', p: 5, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px'}}>
-                      <Typography
-                        variant="subtitle2"
+                  {activeSettings && (
+                    <>
+                    <Card sx={{ justifyContent: 'space-between', p: 5, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px' }}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
+                        fontSize: '32px'
+                      }}
+                    >
+                      Add keys
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                      }}
+                    >
+                      <Select
                         sx={{
-                            fontSize: '32px'
+                          height: '41px',
+                          '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                            border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                            borderRadius: '7px',
+                            borderImageSlice: 1,
+                            borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                          }
+                        }}
+                        MenuProps={{
+                          PaperProps: {
+                            style: {
+                              background: 'linear-gradient(180deg, rgba(177, 79, 255, 1.0) 0%, rgba(160, 144, 255, 1.0) 100%)',
+                              filter: 'drop-shadow(7.91971px 7.91971px 15.8394px rgba(0, 0, 0, 0.25))',
+                            }
+                          }
                         }}
                       >
-                        Add keys
-                      </Typography>
-                      <Box 
+                        <MenuItem value={1}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              margin: '0 -5px'
+                            }}
+                          >
+                            <Box sx={{ margin: '0 5px' }}>
+                              <Image src={folderIcon} width={23} height={23} />
+                            </Box>
+                            <Box sx={{ margin: '0 5px' }}>
+                              <Typography
+                                sx={{
+                                  fontSize: '20px',
+                                  fontWeight: 700
+                                }}
+                              >
+                                Project 1
+                              </Typography>
+                            </Box>
+                          </Box>
+                        </MenuItem>
+                        <MenuItem value={2}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              margin: '0 -5px'
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                margin: '0 5px',
+                              }}
+                            >
+                              <Image src={folderIcon} width={23} height={23} />
+                            </Box>
+                            <Box sx={{ margin: '0 5px' }}>
+                              <Typography
+                                sx={{
+                                  fontSize: '20px',
+                                  fontWeight: 700
+                                }}
+                              >
+                                Project 2
+                              </Typography>
+                            </Box>
+                          </Box>
+                        </MenuItem>
+                        <MenuItem value={3}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              margin: '0 -5px'
+                            }}
+                          >
+                            <Box sx={{ margin: '0 5px' }}>
+                              <Image src={folderIcon} width={23} height={23} />
+                            </Box>
+                            <Box sx={{ margin: '0 5px' }}>
+                              <Typography
+                                sx={{
+                                  fontSize: '20px',
+                                  fontWeight: 700
+                                }}
+                              >
+                                Project 3
+                              </Typography>
+                            </Box>
+                          </Box>
+                        </MenuItem>
+                      </Select>
+                      <Box
                         sx={{
                           display: 'flex',
-                          justifyContent: 'space-between'
+                          flexDirection: 'row',
+                          justifyContent: 'center',
+                          height: '45px',
+                          widht: '394px',
+                          alignItems: 'center',
+                          border: '1px solid',
+                          borderRadius: '7px',
+                          borderImageSlice: 1,
+                          borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                          margin: '0 -5px'
                         }}
+                      >
+                        <Box sx={{ margin: '0 5px' }}>
+                          <Image src={keyIcon} width={24} height={24} />
+                        </Box>
+                        <Box
+                          sx={{
+                            margin: '0 5px',
+                            '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
+                              width: '296px'
+                            },
+                            '& .css-j4fmve-MuiInputBase-root-MuiInput-root:before': {
+                              border: 'none'
+                            },
+                            '& .css-j4fmve-MuiInputBase-root-MuiInput-root:after': {
+                              border: 'none'
+                            },
+                          }}
+                        >
+                          <TextField id="standard-basic" variant="standard" />
+                        </Box>
+                        <Box
+                          sx={{
+                            // display: 'flex',
+                            width: '26px',
+                            height: '26px',
+                            textAlign: 'center',
+                            pt: '4px',
+                            borderRadius: '50%',
+                            background: 'linear-gradient(180deg, #B14FFF 0%, #2D80FF 100%);',
+                            margin: '0 5px',
+                          }}
+                        >
+                          <Image src={exelIcon} width={17} height={17} />
+                        </Box>
+                      </Box>
+                      <Box
+                        sx={{}}
                       >
                         <Select
                           sx={{
                             height: '41px',
+                            width: '198px',
                             '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
                               border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
                               borderRadius: '7px',
                               borderImageSlice: 1,
                               borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                            }
-                          }}
-                          MenuProps={{
-                            PaperProps: {
-                              style: {
-                                background: 'linear-gradient(180deg, rgba(177, 79, 255, 1.0) 0%, rgba(160, 144, 255, 1.0) 100%)',
-                                filter: 'drop-shadow(7.91971px 7.91971px 15.8394px rgba(0, 0, 0, 0.25))',
-                              }
                             }
                           }}
                         >
@@ -202,17 +383,17 @@ const Settings: NextPage = () => {
                                 margin: '0 -5px'
                               }}
                             >
-                              <Box sx={{margin: '0 5px'}}>
-                                <Image src={folderIcon} width={23} height={23}/>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={geoIcon} width={23} height={23} />
                               </Box>
-                              <Box sx={{margin: '0 5px'}}>
+                              <Box sx={{ margin: '0 5px' }}>
                                 <Typography
                                   sx={{
                                     fontSize: '20px',
                                     fontWeight: 700
                                   }}
                                 >
-                                  Project 1
+                                  Geo 1
                                 </Typography>
                               </Box>
                             </Box>
@@ -225,21 +406,21 @@ const Settings: NextPage = () => {
                                 margin: '0 -5px'
                               }}
                             >
-                              <Box 
+                              <Box
                                 sx={{
                                   margin: '0 5px',
                                 }}
                               >
-                                <Image src={folderIcon} width={23} height={23}/>
+                                <Image src={geoIcon} width={23} height={23} />
                               </Box>
-                              <Box sx={{margin: '0 5px'}}>
+                              <Box sx={{ margin: '0 5px' }}>
                                 <Typography
                                   sx={{
                                     fontSize: '20px',
                                     fontWeight: 700
                                   }}
                                 >
-                                  Project 2
+                                  Geo 2
                                 </Typography>
                               </Box>
                             </Box>
@@ -252,388 +433,80 @@ const Settings: NextPage = () => {
                                 margin: '0 -5px'
                               }}
                             >
-                              <Box sx={{margin: '0 5px'}}>
-                                <Image src={folderIcon} width={23} height={23}/>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={geoIcon} width={23} height={23} />
                               </Box>
-                              <Box sx={{margin: '0 5px'}}>
+                              <Box sx={{ margin: '0 5px' }}>
                                 <Typography
                                   sx={{
                                     fontSize: '20px',
                                     fontWeight: 700
                                   }}
                                 >
-                                  Project 3
+                                  Geo 3
                                 </Typography>
                               </Box>
                             </Box>
                           </MenuItem>
                         </Select>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          width: '171px',
+                          height: '45px',
+                          background: 'linear-gradient(90deg, #3CFFF9 0.36%, #00FF66 100.36%);',
+                          borderRadius: '9px',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 -5px'
+                        }}
+                      >
                         <Box
                           sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            height: '45px',
-                            widht: '394px',
-                            alignItems: 'center',
-                            border: '1px solid',
-                            borderRadius: '7px',
-                            borderImageSlice: 1,
-                            borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                            margin: '0 -5px'
+                            margin: '0 5px',
+                            pt: 1
                           }}
                         >
-                          <Box sx={{margin: '0 5px'}}>
-                            <Image src={keyIcon} width={24} height={24} />
-                          </Box>
-                          <Box
-                            sx={{
-                              margin: '0 5px',
-                              '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
-                                width: '296px'
-                              },
-                              '& .css-j4fmve-MuiInputBase-root-MuiInput-root:before': {
-                                border: 'none'
-                              },
-                              '& .css-j4fmve-MuiInputBase-root-MuiInput-root:after': {
-                                border: 'none'
-                              },
-                              
-                            }}
-                          >
-                            <TextField id="standard-basic" variant="standard" />
-                          </Box>
-                          <Box
-                            sx={{
-                              // display: 'flex',
-                              width: '26px',
-                              height: '26px',
-                              textAlign: 'center',
-                              pt: '4px',
-                              borderRadius: '50%',
-                              background: 'linear-gradient(180deg, #B14FFF 0%, #2D80FF 100%);',
-                              margin: '0 5px',
-                            }}
-                          >
-                            <Image src={exelIcon} width={17} height={17} />
-                          </Box>
+                          <Image src={addIcon} width={23} height={23} />
                         </Box>
                         <Box
                           sx={{
-
+                            margin: '0 5px'
                           }}
                         >
-                          <Select
+                          <Typography
                             sx={{
-                              height: '41px',
-                              width: '198px',
-                              '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
-                                border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
-                                borderRadius: '7px',
-                                borderImageSlice: 1,
-                                borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                              }
+                              fontSize: '20px',
+                              fontWeight: 700
                             }}
                           >
-                            <MenuItem value={1}>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  margin: '0 -5px'
-                                }}
-                              >
-                                <Box sx={{margin: '0 5px'}}>
-                                  <Image src={geoIcon} width={23} height={23}/>
-                                </Box>
-                                <Box sx={{margin: '0 5px'}}>
-                                  <Typography
-                                    sx={{
-                                      fontSize: '20px',
-                                      fontWeight: 700
-                                    }}
-                                  >
-                                    Geo 1
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </MenuItem>
-                            <MenuItem value={2}>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  margin: '0 -5px'
-                                }}
-                              >
-                                <Box 
-                                  sx={{
-                                    margin: '0 5px',
-                                  }}
-                                >
-                                  <Image src={geoIcon} width={23} height={23}/>
-                                </Box>
-                                <Box sx={{margin: '0 5px'}}>
-                                  <Typography
-                                    sx={{
-                                      fontSize: '20px',
-                                      fontWeight: 700
-                                    }}
-                                  >
-                                    Geo 2
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </MenuItem>
-                            <MenuItem value={3}>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  margin: '0 -5px'
-                                }}
-                              >
-                                <Box sx={{margin: '0 5px'}}>
-                                  <Image src={geoIcon} width={23} height={23}/>
-                                </Box>
-                                <Box sx={{margin: '0 5px'}}>
-                                  <Typography
-                                    sx={{
-                                      fontSize: '20px',
-                                      fontWeight: 700
-                                    }}
-                                  >
-                                    Geo 3
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </MenuItem>
-                          </Select>
-                        </Box>
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            width: '171px',
-                            height: '45px',
-                            background: 'linear-gradient(90deg, #3CFFF9 0.36%, #00FF66 100.36%);',
-                            borderRadius: '9px',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            margin: '0 -5px'
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              margin: '0 5px',
-                              pt: 1
-                            }}
-                          >
-                            <Image src={addIcon} width={23} height={23}/>
-                          </Box>
-                          <Box
-                            sx={{
-                              margin: '0 5px'
-                            }}
-                          >
-                            <Typography
-                              sx={{
-                                fontSize: '20px',
-                                fontWeight: 700
-                              }}
-                            >
-                              Add
-                            </Typography>
-                          </Box>
+                            Add
+                          </Typography>
                         </Box>
                       </Box>
-                  </Card>
-                  <Card sx={{p: 5, pb: 3, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px'}}>
-                    <TableContainer component={Paper}>
-                      <Table sx={{ minWidth: 650, border: '1px solid white' }} aria-label="simple table">
-                        <TableHead sx={{border: '1px solid white'}}>
-                          <TableRow sx={{border: '1px solid white'}}>
-                            <TableCell sx={{background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);'}}>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  margin: '0 -5px'
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Image src={folderIcon} width={22} height={19}/>
-                                </Box>
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Typography
-                                    sx={{
-                                      color: '#ffffff',
-                                      fontWeight: 700
-                                    }}
-                                  >
-                                    PROJECT
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </TableCell>
-                            <TableCell sx={{background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);'}} align="right">
-                            <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'end',
-                                  margin: '0 -5px'
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Image src={keyIcon} width={22} height={19}/>
-                                </Box>
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Typography
-                                    sx={{
-                                      color: '#ffffff',
-                                      fontWeight: 700
-                                    }}
-                                  >
-                                    KEY
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </TableCell>
-                            <TableCell sx={{background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);'}} align="right">
-                            <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  margin: '0 -5px'
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Image src={geoIcon} width={22} height={19}/>
-                                </Box>
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Typography
-                                    sx={{
-                                      color: '#ffffff',
-                                      fontWeight: 700
-                                    }}
-                                  >
-                                    GEO
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </TableCell>
-                            <TableCell sx={{background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);'}} align="right">
-                            <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  // justifyContent: 'center',
-                                  margin: '0 -5px'
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Image src={deleteIcon} width={22} height={19}/>
-                                </Box>
-                                <Box
-                                  sx={{
-                                    margin: '0 5px'
-                                  }}
-                                >
-                                  <Typography
-                                    sx={{
-                                      color: '#ffffff',
-                                      fontWeight: 700
-                                    }}
-                                  >
-                                    DELETE
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {rows.map((row) => (
-                            <TableRow
-                              key={row.project}
-                              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                              <TableCell component="th" scope="row">
-                                {row.project}
-                              </TableCell>
-                              <TableCell style={{width: '100px'}}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    color: 'secondary.main',
-                                    height: '28px',
-                                    border: '1px solid',
-                                    borderRadius: '7px',
-                                    borderImageSlice: 1,
-                                    borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                                  }}
-                                >
-                                  {row.key}
-                                </Box>
-                              </TableCell>
-                              <TableCell style={{width: '183px'}} align="left">{row.geo}</TableCell>
-                              <TableCell style={{width: '150px'}}>
+                    </Box>
+                  </Card><Card sx={{ p: 5, pb: 3, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px' }}>
+                      <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 650, border: '1px solid white' }} aria-label="simple table">
+                          <TableHead sx={{ border: '1px solid white' }}>
+                            <TableRow sx={{ border: '1px solid white' }}>
+                              <TableCell sx={{ background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }}>
                                 <Box
                                   sx={{
                                     display: 'flex',
                                     flexDirection: 'row',
                                     alignItems: 'center',
-                                    justifyContent: 'center',
-                                    cursor: 'pointer',
-                                    margin: '0 -5px',
-                                    // width: '137px',
-                                    height: '29px',
-                                    background: 'linear-gradient(89.96deg, #FF35A2 0.36%, #BE35FF 98.83%)',
-                                    borderRadius: '8px'
+                                    margin: '0 -5px'
                                   }}
                                 >
                                   <Box
                                     sx={{
-                                      margin: '0 5px',
-                                      pt: '5px'
+                                      margin: '0 5px'
                                     }}
                                   >
-                                    <Image src={deleteIcon} width={21} height={18} />
+                                    <Image src={folderIcon} width={22} height={19} />
                                   </Box>
                                   <Box
                                     sx={{
@@ -642,7 +515,105 @@ const Settings: NextPage = () => {
                                   >
                                     <Typography
                                       sx={{
-                                        fontSize: '16px',
+                                        color: '#ffffff',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      PROJECT
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </TableCell>
+                              <TableCell sx={{ background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }} align="right">
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'end',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={keyIcon} width={22} height={19} />
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Typography
+                                      sx={{
+                                        color: '#ffffff',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      KEY
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </TableCell>
+                              <TableCell sx={{ background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }} align="right">
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={geoIcon} width={22} height={19} />
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Typography
+                                      sx={{
+                                        color: '#ffffff',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      GEO
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </TableCell>
+                              <TableCell sx={{ background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }} align="right">
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    // justifyContent: 'center',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={deleteIcon} width={22} height={19} />
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Typography
+                                      sx={{
+                                        color: '#ffffff',
                                         fontWeight: 700
                                       }}
                                     >
@@ -652,95 +623,815 @@ const Settings: NextPage = () => {
                                 </Box>
                               </TableCell>
                             </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                    <Box 
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        mt: 2,
-                      }}
-                    >
+                          </TableHead>
+                          <TableBody>
+                            {rows.map((row) => (
+                              <TableRow
+                                key={row.project}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                              >
+                                <TableCell component="th" scope="row">
+                                  {row.project}
+                                </TableCell>
+                                <TableCell style={{ width: '100px' }}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      justifyContent: 'center',
+                                      alignItems: 'center',
+                                      color: 'secondary.main',
+                                      height: '28px',
+                                      border: '1px solid',
+                                      borderRadius: '7px',
+                                      borderImageSlice: 1,
+                                      borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                    }}
+                                  >
+                                    {row.key}
+                                  </Box>
+                                </TableCell>
+                                <TableCell style={{ width: '183px' }} align="left">{row.geo}</TableCell>
+                                <TableCell style={{ width: '150px' }}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      cursor: 'pointer',
+                                      margin: '0 -5px',
+                                      // width: '137px',
+                                      height: '29px',
+                                      background: 'linear-gradient(89.96deg, #FF35A2 0.36%, #BE35FF 98.83%)',
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px',
+                                        pt: '5px'
+                                      }}
+                                    >
+                                      <Image src={deleteIcon} width={21} height={18} />
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          fontSize: '16px',
+                                          fontWeight: 700
+                                        }}
+                                      >
+                                        DELETE
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
                       <Box
                         sx={{
                           display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          m: '0 -10px'
+                          justifyContent: 'center',
+                          mt: 2,
                         }}
                       >
                         <Box
                           sx={{
-                            width: '36px',
-                            height: '36px',
-                            borderRadius: '72px',
-                            background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
-                            m: '0 10px',
-                            cursor: 'pointer'
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            m: '0 -10px'
                           }}
                         >
-                          <ChevronLeft fontSize="large" />
-                        </Box>
-                        <Box
-                          sx={{
-                            m: '0 10px'
-                          }}
-                        >
-                          <Typography>
-                            page
-                          </Typography>
-                        </Box>
-                        <Box
-                          sx={{
-                            width: '83px',
-                            height: '35px',
-                            m: '0 10px',
-                            '& .css-9vjw2o-MuiInputBase-root-MuiOutlinedInput-root': {
-                              height: '35px',
-                            },
-                            '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
-                              border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
-                              borderRadius: '7px',
-                              borderImageSlice: 1,
-                              borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                            }
-                          }}
-                        >
-                          <TextField
-                            id="outlined-number"
-                            // label="Number"
-                            type="number"
-                            InputLabelProps={{
-                              shrink: true,
+                          <Box
+                            sx={{
+                              width: '36px',
+                              height: '36px',
+                              borderRadius: '72px',
+                              background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
+                              m: '0 10px',
+                              cursor: 'pointer'
                             }}
-                          />
-                        </Box>
-                        <Box
-                          sx={{
-                            m: '0 10px'
-                          }}
-                        >
-                          <Typography>
-                            out of 22
-                          </Typography>
-                        </Box>
-                        <Box
-                          sx={{
-                            width: '36px',
-                            height: '36px',
-                            borderRadius: '72px',
-                            background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
-                            m: '0 10px',
-                            cursor: 'pointer'
-                          }}
-                        >
-                          <ChevronRight fontSize="large" />
+                          >
+                            <ChevronLeft fontSize="large" />
+                          </Box>
+                          <Box
+                            sx={{
+                              m: '0 10px'
+                            }}
+                          >
+                            <Typography>
+                              page
+                            </Typography>
+                          </Box>
+                          <Box
+                            sx={{
+                              width: '83px',
+                              height: '35px',
+                              m: '0 10px',
+                              '& .css-9vjw2o-MuiInputBase-root-MuiOutlinedInput-root': {
+                                height: '35px',
+                              },
+                              '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                borderRadius: '7px',
+                                borderImageSlice: 1,
+                                borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                              }
+                            }}
+                          >
+                            <TextField
+                              id="outlined-number"
+                              // label="Number"
+                              type="number"
+                              InputLabelProps={{
+                                shrink: true,
+                              }} />
+                          </Box>
+                          <Box
+                            sx={{
+                              m: '0 10px'
+                            }}
+                          >
+                            <Typography>
+                              out of 22
+                            </Typography>
+                          </Box>
+                          <Box
+                            sx={{
+                              width: '36px',
+                              height: '36px',
+                              borderRadius: '72px',
+                              background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
+                              m: '0 10px',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            <ChevronRight fontSize="large" />
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
-                  </Card>
+                    </Card></>
+                  )}
+                  {!activeSettings && (
+                    <>
+                      <Card sx={{p: 3, mt: 5, background: '#222543', borderRadius: '30px'}}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            mb: 3
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                              margin: '0 -5px'
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                margin: '0 5px'
+                              }}
+                            >
+                              <Image src={pencilIcon} width={23} height={23} />
+                            </Box>
+                            <Box
+                              sx={{
+                                margin: '0 5px'
+                              }}
+                            >
+                              <Typography
+                                  variant="subtitle2"
+                                  sx={{
+                                      fontSize: '32px'
+                                  }}
+                              >
+                                  Filing a complaint
+                              </Typography>
+                            </Box>
+                          </Box>
+                          <Box>
+                            <Switch checked={checked} onChange={switchHandler} />
+                          </Box>
+                        </Box>
+                        { checked && (
+                          <>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              margin: '0 -5px'
+                            }}
+                          >
+                            <Select
+                              sx={{
+                                width: '521px',
+                                height: '56px',
+                                margin: '0 10px',
+                                '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                  border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                  borderRadius: '7px',
+                                  borderImageSlice: 1,
+                                  borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                }
+                              }}
+                            >
+                              <MenuItem value={1}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Image src={worldIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      WEBSITE 1
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                              <MenuItem value={2}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px',
+                                    }}
+                                  >
+                                    <Image src={worldIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      WEBSITE 2
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                              <MenuItem value={3}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Image src={worldIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      WEBSITE 3
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                            </Select>
+                            <Select
+                              sx={{
+                                width: '279px',
+                                height: '56px',
+                                margin: '0 10px',
+                                '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                  border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                  borderRadius: '7px',
+                                  borderImageSlice: 1,
+                                  borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                }
+                              }}
+                            >
+                              <MenuItem value={1}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Image src={geoIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      GEO 1
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                              <MenuItem value={2}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px',
+                                    }}
+                                  >
+                                    <Image src={geoIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      GEO 2
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                              <MenuItem value={3}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Image src={geoIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      GEO 3
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                            </Select>
+                            <Select
+                              sx={{
+                                width: '345px',
+                                height: '56px',
+                                margin: '0 10px',
+                                '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                  border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                  borderRadius: '7px',
+                                  borderImageSlice: 1,
+                                  borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                }
+                              }}
+                            >
+                              <MenuItem value={1}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Image src={folderIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      PROJECT 1
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                              <MenuItem value={2}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px',
+                                    }}
+                                  >
+                                    <Image src={folderIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      PROJECT 2
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                              <MenuItem value={3}>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Image src={folderIcon} width={26} height={26} />
+                                  </Box>
+                                  <Box sx={{ margin: '0 5px' }}>
+                                    <Typography
+                                      sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 700
+                                      }}
+                                    >
+                                      PROJECT 3
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </MenuItem>
+                            </Select>
+                          </Box>
+                          <TextField
+                            placeholder="Your note"
+                            multiline
+                            rows={3}
+                            // maxRows={4}
+                            sx={{
+                              width: '100%',
+                              mt: 3,
+                              background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(66, 141, 255, 0.31) 100%);',
+                              border: '1px solid #ffffff',
+                              borderRadius: '9px'
+                            }}
+                          />
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'end',
+                              mt: 3
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                width: '171px',
+                                height: '45px',
+                                background: 'linear-gradient(90deg, #3CFFF9 0.36%, #00FF66 100.36%);',
+                                borderRadius: '9px',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  margin: '0 5px',
+                                  pt: 1
+                                }}
+                              >
+                                <Image src={addIcon} width={23} height={23} />
+                              </Box>
+                              <Box
+                                sx={{
+                                  margin: '0 5px'
+                                }}
+                              >
+                                <Typography
+                                  sx={{
+                                    fontSize: '20px',
+                                    fontWeight: 700
+                                  }}
+                                >
+                                  ADD
+                                </Typography>
+                              </Box>
+                            </Box>
+                            
+                          </Box>
+                          </>
+                        )}
+                      </Card>
+                      <Card sx={{p: 3, mt: 5, background: '#222543', borderRadius: '30px'}}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            margin: '0 -5px'
+                          }}
+                        >
+                          <Box
+                              sx={{
+                                margin: '0 5px'
+                              }}
+                            >
+                              <Image src={documentIcon} width={30} height={30} />
+                            </Box>
+                            <Box
+                              sx={{
+                                margin: '0 5px'
+                              }}
+                            >
+                              <Typography
+                                  variant="subtitle2"
+                                  sx={{
+                                      fontSize: '32px'
+                                  }}
+                              >
+                                  White list
+                              </Typography>
+                            </Box>
+                        </Box>
+                        <Box sx={{mt: 3}}>
+                          <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650, border: '1px solid white' }} aria-label="simple table">
+                              <TableHead sx={{ border: '1px solid white' }}>
+                                <TableRow sx={{ border: '1px solid white' }}>
+                                  <TableCell sx={{ background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }}>
+                                    <Box
+                                      sx={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        margin: '0 -5px'
+                                      }}
+                                    >
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Image src={worldIcon} width={22} height={19} />
+                                      </Box>
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Typography
+                                          sx={{
+                                            color: '#ffffff',
+                                            fontWeight: 700
+                                          }}
+                                        >
+                                          WEBSITE
+                                        </Typography>
+                                      </Box>
+                                    </Box>
+                                  </TableCell>
+                                  <TableCell sx={{width: '214px', background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }} align="right">
+                                    <Box
+                                      sx={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        margin: '0 -5px'
+                                      }}
+                                    >
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Image src={geoIcon} width={22} height={19} />
+                                      </Box>
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Typography
+                                          sx={{
+                                            color: '#ffffff',
+                                            fontWeight: 700
+                                          }}
+                                        >
+                                          GEO
+                                        </Typography>
+                                      </Box>
+                                    </Box>
+                                  </TableCell>
+                                  <TableCell sx={{width: '214px', background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }} align="right">
+                                    <Box
+                                      sx={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        margin: '0 -5px'
+                                      }}
+                                    >
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Image src={folderIcon} width={22} height={19} />
+                                      </Box>
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Typography
+                                          sx={{
+                                            color: '#ffffff',
+                                            fontWeight: 700
+                                          }}
+                                        >
+                                          PROJECT
+                                        </Typography>
+                                      </Box>
+                                    </Box>
+                                  </TableCell>
+                                  <TableCell sx={{ background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%);' }} align="right">
+                                    <Box
+                                      sx={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        margin: '0 -5px'
+                                      }}
+                                    >
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Image src={pencilIcon} width={22} height={19} />
+                                      </Box>
+                                      <Box
+                                        sx={{
+                                          margin: '0 5px'
+                                        }}
+                                      >
+                                        <Typography
+                                          sx={{
+                                            color: '#ffffff',
+                                            fontWeight: 700
+                                          }}
+                                        >
+                                          NOTES
+                                        </Typography>
+                                      </Box>
+                                    </Box>
+                                  </TableCell>
+                                </TableRow>
+                              </TableHead>
+                              <TableBody>
+                                {rowsComplaints.map((row) => (
+                                  <TableRow
+                                    key={row.website}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                  >
+                                    <TableCell component="th" scope="row">
+                                      {row.website}
+                                    </TableCell>
+                                    <TableCell align="left">{row.geo}</TableCell>
+                                    <TableCell align="left">{row.project}</TableCell>
+                                    <TableCell align="left">{row.notes}</TableCell>
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                            </Table>
+                          </TableContainer>
+                        </Box>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            mt: 2,
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                              m: '0 -10px'
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                width: '36px',
+                                height: '36px',
+                                borderRadius: '72px',
+                                background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
+                                m: '0 10px',
+                                cursor: 'pointer'
+                              }}
+                            >
+                              <ChevronLeft fontSize="large" />
+                            </Box>
+                            <Box
+                              sx={{
+                                m: '0 10px'
+                              }}
+                            >
+                              <Typography>
+                                page
+                              </Typography>
+                            </Box>
+                            <Box
+                              sx={{
+                                width: '83px',
+                                height: '35px',
+                                m: '0 10px',
+                                '& .css-9vjw2o-MuiInputBase-root-MuiOutlinedInput-root': {
+                                  height: '35px',
+                                },
+                                '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                  border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                  borderRadius: '7px',
+                                  borderImageSlice: 1,
+                                  borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                }
+                              }}
+                            >
+                              <TextField
+                                id="outlined-number"
+                                // label="Number"
+                                type="number"
+                                InputLabelProps={{
+                                  shrink: true,
+                                }} />
+                            </Box>
+                            <Box
+                              sx={{
+                                m: '0 10px'
+                              }}
+                            >
+                              <Typography>
+                                out of 22
+                              </Typography>
+                            </Box>
+                            <Box
+                              sx={{
+                                width: '36px',
+                                height: '36px',
+                                borderRadius: '72px',
+                                background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
+                                m: '0 10px',
+                                cursor: 'pointer'
+                              }}
+                            >
+                              <ChevronRight fontSize="large" />
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Card>
+                    </>
+                  )}
                 </Grid>
               </Grid>
             </Container>
