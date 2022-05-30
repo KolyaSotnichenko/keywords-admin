@@ -55,11 +55,11 @@ const Overview: NextPage = () => {
     }
   }, []);
 
-  const handleDismissBanner = () => {
-    // Update the persistent state
-    // globalThis.sessionStorage.setItem('dismiss-banner', 'true');
-    setDisplayBanner(false);
-  };
+  // const handleDismissBanner = () => {
+  //   // Update the persistent state
+  //   // globalThis.sessionStorage.setItem('dismiss-banner', 'true');
+  //   setDisplayBanner(false);
+  // };
 
   return (
     <>
@@ -83,11 +83,15 @@ const Overview: NextPage = () => {
               spacing={3}
             >
               <Grid item>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <HomeIcon fontSize="large" color='secondary' />
-                  <Typography variant="h4" color="secondary">
-                    Overview
-                  </Typography>
+                <Box sx={{display: 'flex', alignItems: 'center', margin: '0 -5px'}}>
+                  <Box sx={{margin: '0 5px'}}>
+                    <HomeIcon fontSize="large" color='secondary' />
+                  </Box>
+                  <Box sx={{margin: '0 5px'}}>
+                    <Typography variant="h4" color="secondary">
+                      Overview
+                    </Typography>
+                  </Box>
                 </Box>
               </Grid>
               <Grid

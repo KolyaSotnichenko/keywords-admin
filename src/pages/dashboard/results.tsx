@@ -1,12 +1,856 @@
+import { Grid, Typography, Select, MenuItem, Card, Checkbox, FormGroup, FormControlLabel, Divider, TextField } from "@mui/material";
+import { Box, Container } from "@mui/system";
 import { NextPage } from "next";
+import Image from 'next/image'
+import Head from "next/head";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import { DashboardLayout } from "src/components/dashboard/dashboard-layout";
 
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+
+import calendarIcon from '../../../public/calendar.png'
+import qIcon from '../../../public/qIcon.png'
+import icon1 from '../../../public/icon1.png'
+import icon2 from '../../../public/icon2.png'
+import pageIcon from '../../../public/page.png'
+import exportIcon from '../../../public/export.png'
+
+
+import { ChartBar } from "src/icons/chart-bar";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+
+const columns: GridColDef[] = [
+  { 
+    field: 'site',
+    headerName: 'Site', 
+    width: 188,
+    sortable: false,
+  },
+  { 
+    field: 'publisher', 
+    headerName: 'Publisher', 
+    width: 167,
+    sortable: false,
+  },
+  { 
+    field: 'keywords', 
+    headerName: 'Keywords', 
+    width: 167,
+    sortable: false,
+  },
+  { 
+    field: 'text', 
+    headerName: 'Titles and text', 
+    width: 294,
+    sortable: false,
+  },
+  { 
+    field: 'countries', 
+    headerName: 'Countries', 
+    width: 172,
+    sortable: false,
+  },
+  { 
+    field: 'ads', 
+    headerName: 'Ads', 
+    width: 106,
+    sortable: false,
+  },
+];
+
+const rows = [
+  { id: 1,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
+  { id: 2,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
+  { id: 3,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
+  { id: 4,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
+  { id: 5,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
+];
 
 const Results: NextPage = () => {
+
+  
+
     return (
         <>
-        Results page
+          <Head>
+            <title>
+              Result
+            </title>
+          </Head>
+          <Box
+            component="main"
+            sx={{
+              flexGrow: 1,
+              py: 8
+            }}
+          >
+            <Container maxWidth="xl">
+              <Box sx={{ mb: 4 }}>
+                <Grid
+                  container
+                  justifyContent="space-between"
+                  spacing={3}
+                >
+                  <Grid item>
+                    <Box sx={{display: 'flex', alignItems: 'center', margin: '0 -5px'}}>
+                      <Box sx={{margin: '0 5px'}}>
+                        <ChartBar fontSize="large" color='secondary' />
+                      </Box>
+                      <Box sx={{margin: '0 5px'}}>
+                        <Typography variant="h4" color="secondary">
+                          Results
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Grid>
+                  <Grid
+                    item
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      m: -1
+                    }}
+                  >
+                  </Grid>
+                </Grid>
+              </Box>
+              <Grid
+                container
+                spacing={4}
+              >
+                <Grid
+                  item
+                  md={12}
+                  xs={12}
+                >
+                  <Card sx={{p: 5, mt: 2, background: '#222543', borderRadius: '30px'}}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        margin: '0 -5px'
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          margin: '0 5px'
+                        }}
+                      >
+                        <Select
+                          sx={{
+                            height: '37px',
+                            width: '300px',
+                            '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                              border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                              borderRadius: '7px',
+                              borderImageSlice: 1,
+                              borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            },
+                            '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
+                              width: '230px'
+                            }
+                          }}
+                        >
+                          <MenuItem value={1}>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={calendarIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  2022-01-01-2022-12-02
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={2}>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  margin: '0 5px',
+                                }}
+                              >
+                                <Image src={calendarIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  2022-01-01-2022-12-02
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={3}>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={calendarIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  2022-01-01-2022-12-02
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                        </Select>
+                      </Box>
+                      <Box 
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between'
+                        }}
+                      >
+                        <FormGroup>
+                          <FormControlLabel control={<Checkbox sx={{
+                            width: '28px',
+                            height: '28px',
+                            border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                            borderRadius: '50%',
+                            borderImageSlice: 1,
+                            borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                          }} />} label="has brand" />
+                        </FormGroup>
+                        <Box
+                          sx={{
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <Image src={qIcon} width={22} height={23}/>
+                        </Box>
+                      </Box>
+                      <Box>
+                        <Select
+                          sx={{
+                            height: '37px',
+                            width: '142px',
+                            '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                              border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                              borderRadius: '7px',
+                              borderImageSlice: 1,
+                              borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            }
+                          }}
+                        >
+                          <MenuItem value={1}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  All Countries
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={2}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Country 1
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={3}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Country 2
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                        </Select>
+                      </Box>
+                      <Box>
+                        <Select
+                          sx={{
+                            height: '37px',
+                            width: '174px',
+                            '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                              border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                              borderRadius: '7px',
+                              borderImageSlice: 1,
+                              borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            },
+                          }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                              }
+                            }
+                          }}
+                        >
+                          <MenuItem value={1}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Projects(1/514)
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={2}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Projects(2/514)
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={3}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Projects(3/514)
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                        </Select>
+                      </Box>
+                      <Box>
+                        <Select
+                          sx={{
+                            height: '37px',
+                            width: '300px',
+                            '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                              border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                              borderRadius: '7px',
+                              borderImageSlice: 1,
+                              borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            },
+                            '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
+                              width: '230px'
+                            }
+                          }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                              }
+                            }
+                          }}
+                        >
+                          <MenuItem value={1}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Common:(9/23),Report:(0/2)
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={2}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Common:(9/23),Report:(0/2)
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={3}>
+                            <Box>
+                              <Box>
+                                <Typography
+                                  sx={{
+                                    fontSize: '19px',
+                                    fontWeight: 400
+                                  }}
+                                >
+                                  Common:(9/23),Report:(0/2)
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                        </Select>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: '8px',
+                          width: '76px',
+                          height: '38px',
+                          background: 'linear-gradient(180deg, #B14FFF 0%, #2D80FF 100%)',
+                          pt: 1
+                        }}
+                      >
+                        <Box>
+                          <Image src={icon1} width={32} height={30}/>
+                        </Box>
+                        <Box>
+                          <Image src={icon2} width={32} height={30}/>
+                        </Box>
+                      </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        mt: '26px',
+                        mb: '24px',
+                        height: '1px',
+                        width: '100%',
+                        backgroundColor: '#ffffff'
+                      }}
+                    >
+                    </Box> 
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        margin: '0 -5px'
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: 'flex',
+                        }}
+                      >
+                        <Box sx={{margin: '0 5px'}}>
+                          <Typography>
+                            on page
+                          </Typography>
+                        </Box>
+                        <Box sx={{margin: '0 5px'}}>
+                          <Select
+                            sx={{
+                              height: '25px',
+                              width: '80px',
+                              '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                borderRadius: '7px',
+                                borderImageSlice: 1,
+                                borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                              },
+                              // '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
+                              //   width: '230px'
+                              // }
+                            }}
+                          >
+                            <MenuItem value={1}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  margin: '0 -2px'
+                                }}
+                              >
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Image src={pageIcon} width={12} height={12} />
+                                </Box>
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '13px',
+                                      fontWeight: 400
+                                    }}
+                                  >
+                                    10
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </MenuItem>
+                            <MenuItem value={2}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  margin: '0 -2px'
+                                }}
+                              >
+                                <Box
+                                  sx={{
+                                    margin: '0 2px',
+                                  }}
+                                >
+                                  <Image src={pageIcon} width={12} height={12} />
+                                </Box>
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '13px',
+                                      fontWeight: 400
+                                    }}
+                                  >
+                                    20
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </MenuItem>
+                            <MenuItem value={3}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  margin: '0 -2px'
+                                }}
+                              >
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Image src={pageIcon} width={12} height={12} />
+                                </Box>
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '13px',
+                                      fontWeight: 400
+                                    }}
+                                  >
+                                    30
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </MenuItem>
+                          </Select>
+                        </Box>
+                        <Box sx={{margin: '0 5px'}}>
+                          <Select
+                            sx={{
+                              height: '25px',
+                              width: '110px',
+                              '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                borderRadius: '7px',
+                                borderImageSlice: 1,
+                                borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                              },
+                              // '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
+                              //   width: '230px'
+                              // }
+                            }}
+                          >
+                            <MenuItem value={1}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  margin: '0 -2px'
+                                }}
+                              >
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Image src={exportIcon} width={12} height={12} />
+                                </Box>
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '13px',
+                                      fontWeight: 400
+                                    }}
+                                  >
+                                    Export
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </MenuItem>
+                            <MenuItem value={2}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  margin: '0 -2px'
+                                }}
+                              >
+                                <Box
+                                  sx={{
+                                    margin: '0 2px',
+                                  }}
+                                >
+                                  <Image src={exportIcon} width={12} height={12} />
+                                </Box>
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '13px',
+                                      fontWeight: 400
+                                    }}
+                                  >
+                                    Export
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </MenuItem>
+                            <MenuItem value={3}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  margin: '0 -2px'
+                                }}
+                              >
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Image src={exportIcon} width={12} height={12} />
+                                </Box>
+                                <Box sx={{ margin: '0 2px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '13px',
+                                      fontWeight: 400
+                                    }}
+                                  >
+                                    Export
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </MenuItem>
+                          </Select>
+                        </Box>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          margin: '0 -5px'
+                        }}
+                      >
+                        <Box sx={{margin: '0 5px'}}>
+                          <Typography>
+                            Showing
+                          </Typography>
+                        </Box>
+                        <Box sx={{margin: '0 5px'}}>
+                          <Typography
+                            sx={{
+                              fontWeight: 700,
+                              fontSize: '18px'
+                            }}
+                          >
+                            1-20
+                          </Typography>
+                        </Box>
+                        <Box sx={{margin: '0 5px'}}>
+                          <Typography>
+                            of
+                          </Typography>
+                        </Box>
+                        <Box sx={{margin: '0 5px'}}>
+                          <Typography
+                            sx={{
+                              fontWeight: 700,
+                              fontSize: '18px'
+                            }}
+                          >
+                            258
+                          </Typography>
+                        </Box>
+                        <Box sx={{margin: '0 5px'}}>
+                          <Typography>
+                            items
+                          </Typography>
+                        </Box>
+                      </Box> 
+                    </Box>
+                    <Box
+                      sx={{
+                        width: '100%',
+                        height: '400px',
+                        mt: '24px'
+                      }}
+                    >
+                      <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        pageSize={5}
+                        rowsPerPageOptions={[5]}
+                        checkboxSelection
+                        sx={{
+                            border: '1px solid #ffffff',
+                            borderRadius: '7px',
+                            '.MuiDataGrid-columnSeparator': {
+                              display: 'none',
+                            },
+                            '.MuiDataGrid-cell':{
+                              border: 'none'
+                            },
+                            '.MuiDataGrid-columnHeaders':{
+                              border: 'none'
+                            },
+                            '.MuiDataGrid-footerContainer': {
+                              border: 'none'
+                            },
+                            '.MuiDataGrid-menuIcon': {
+                              display: 'none'
+                            },
+                            '.MuiDataGrid-footerContainer': {
+                              display: 'none'
+                            },
+                            '.MuiDataGrid-columnHeaderTitle': {
+                              fontSize: '19px',
+                              fontWeight: 700
+                            }
+                        }}
+                      />
+                    </Box>
+                  </Card>
+                </Grid>
+                <Grid item md={12} xs={12}>
+                  <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          mt: 2,
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            m: '0 -10px'
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              width: '36px',
+                              height: '36px',
+                              borderRadius: '72px',
+                              background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
+                              m: '0 10px',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            <ChevronLeft fontSize="large" />
+                          </Box>
+                          <Box
+                            sx={{
+                              m: '0 10px'
+                            }}
+                          >
+                            <Typography>
+                              page
+                            </Typography>
+                          </Box>
+                          <Box
+                            sx={{
+                              width: '83px',
+                              height: '35px',
+                              m: '0 10px',
+                              '& .css-9vjw2o-MuiInputBase-root-MuiOutlinedInput-root': {
+                                height: '35px',
+                              },
+                              '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                borderRadius: '7px',
+                                borderImageSlice: 1,
+                                borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                              }
+                            }}
+                          >
+                          <TextField
+                            id="outlined-number"
+                            // label="Number"
+                            type="number"
+                            InputLabelProps={{
+                              shrink: true,
+                            }} />
+                        </Box>
+                        <Box
+                          sx={{
+                            m: '0 10px'
+                          }}
+                        >
+                        <Typography>
+                          out of 151
+                        </Typography>
+                      </Box>
+                      <Box
+                        sx={{
+                          width: '36px',
+                          height: '36px',
+                          borderRadius: '72px',
+                          background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%);',
+                          m: '0 10px',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <ChevronRight fontSize="large" />
+                      </Box>
+                    </Box>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Container>
+          </Box>
         </>
     )
 }

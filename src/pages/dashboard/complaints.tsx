@@ -9,6 +9,7 @@ import Charts from "../browse/charts";
 import { ChartPie as ChartPieIcon } from "src/icons/chart-pie";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
+import Head from "next/head";
 
 
 function createData1(
@@ -56,6 +57,11 @@ const rows2 = [
 const Complaints: NextPage = () => {
     return (
         <>
+          <Head>
+            <title>
+              Complaints
+            </title>
+          </Head>
         <Box
           component="main"
           sx={{
@@ -71,11 +77,15 @@ const Complaints: NextPage = () => {
                 spacing={3}
               >
                 <Grid item>
-                  <Box sx={{display: 'flex', alignItems: 'center'}}>
-                    <ChartPieIcon fontSize="large" color='secondary' />
-                    <Typography variant="h4" color="secondary">
-                      Complaints
-                    </Typography>
+                  <Box sx={{display: 'flex', alignItems: 'center', margin: '0 -5px'}}>
+                    <Box sx={{margin: '0 5px'}}>
+                      <ChartPieIcon fontSize="large" color='secondary' />
+                    </Box>
+                    <Box sx={{margin: '0 5px'}}>
+                      <Typography variant="h4" color="secondary">
+                        Complaints
+                      </Typography>
+                    </Box>
                   </Box>
                 </Grid>
                 

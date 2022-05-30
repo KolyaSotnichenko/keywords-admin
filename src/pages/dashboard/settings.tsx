@@ -18,6 +18,7 @@ import worldIcon from '../../../public/world.png'
 import documentIcon from '../../../public/document.png'
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useState } from "react";
+import Head from "next/head";
 
 
 function createData(
@@ -63,6 +64,11 @@ const Settings: NextPage = () => {
 
     return (
         <>
+          <Head>
+            <title>
+              Settings
+            </title>
+          </Head>
           <Box
             component="main"
             sx={{
@@ -482,7 +488,7 @@ const Settings: NextPage = () => {
                               fontWeight: 700
                             }}
                           >
-                            Add
+                            ADD
                           </Typography>
                         </Box>
                       </Box>

@@ -43,6 +43,7 @@
     "@mui/material": "^5.0.4",
     "@mui/styles": "^5.8.0",
     "@mui/system": "^5.0.4",
+    "@mui/x-data-grid": "^5.11.1",
     "@react-pdf/renderer": "^1.6.13",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/lodash": "^4.14.167",
