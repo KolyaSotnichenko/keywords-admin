@@ -97,7 +97,11 @@ const Results: NextPage = () => {
                         <ChartBar fontSize="large" color='secondary' />
                       </Box>
                       <Box sx={{margin: '0 5px'}}>
-                        <Typography variant="h4" color="secondary">
+                        <Typography variant="h4" color="secondary"
+                          sx={{
+                            fontFamily: 'Jua'
+                          }}
+                        >
                           Results
                         </Typography>
                       </Box>
@@ -167,7 +171,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   2022-01-01-2022-12-02
@@ -194,7 +199,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   2022-01-01-2022-12-02
@@ -217,7 +223,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   2022-01-01-2022-12-02
@@ -237,10 +244,17 @@ const Results: NextPage = () => {
                           <FormControlLabel control={<Checkbox sx={{
                             width: '28px',
                             height: '28px',
+                            fontFamily: 'Jost',
                             border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
                             borderRadius: '50%',
                             borderImageSlice: 1,
                             borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            '.css-i4bv87-MuiSvgIcon-root':{
+                              // borderRadius: '50%',
+                            // borderImageSlice: 1,
+                            // borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            // fill: "red"
+                            }
                           }} />} label="has brand" />
                         </FormGroup>
                         <Box
@@ -270,7 +284,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   All Countries
@@ -284,7 +299,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Country 1
@@ -298,7 +314,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Country 2
@@ -334,7 +351,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Projects(1/514)
@@ -348,7 +366,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Projects(2/514)
@@ -362,7 +381,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Projects(3/514)
@@ -401,7 +421,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Common:(9/23),Report:(0/2)
@@ -415,7 +436,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Common:(9/23),Report:(0/2)
@@ -429,7 +451,8 @@ const Results: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '19px',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Common:(9/23),Report:(0/2)
@@ -482,7 +505,11 @@ const Results: NextPage = () => {
                         }}
                       >
                         <Box sx={{margin: '0 5px'}}>
-                          <Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: 'Jost'
+                            }}
+                          >
                             on page
                           </Typography>
                         </Box>
@@ -518,7 +545,8 @@ const Results: NextPage = () => {
                                   <Typography
                                     sx={{
                                       fontSize: '13px',
-                                      fontWeight: 400
+                                      fontWeight: 400,
+                                      fontFamily: 'Jost'
                                     }}
                                   >
                                     10
@@ -546,7 +574,8 @@ const Results: NextPage = () => {
                                   <Typography
                                     sx={{
                                       fontSize: '13px',
-                                      fontWeight: 400
+                                      fontWeight: 400,
+                                      fontFamily: 'Jost'
                                     }}
                                   >
                                     20
@@ -570,7 +599,8 @@ const Results: NextPage = () => {
                                   <Typography
                                     sx={{
                                       fontSize: '13px',
-                                      fontWeight: 400
+                                      fontWeight: 400,
+                                      fontFamily: 'Jost'
                                     }}
                                   >
                                     30
@@ -612,7 +642,8 @@ const Results: NextPage = () => {
                                   <Typography
                                     sx={{
                                       fontSize: '13px',
-                                      fontWeight: 400
+                                      fontWeight: 400,
+                                      fontFamily: 'Jost'
                                     }}
                                   >
                                     Export
@@ -640,7 +671,8 @@ const Results: NextPage = () => {
                                   <Typography
                                     sx={{
                                       fontSize: '13px',
-                                      fontWeight: 400
+                                      fontWeight: 400,
+                                      fontFamily: 'Jost'
                                     }}
                                   >
                                     Export
@@ -664,7 +696,8 @@ const Results: NextPage = () => {
                                   <Typography
                                     sx={{
                                       fontSize: '13px',
-                                      fontWeight: 400
+                                      fontWeight: 400,
+                                      fontFamily: 'Jost'
                                     }}
                                   >
                                     Export
@@ -684,7 +717,11 @@ const Results: NextPage = () => {
                         }}
                       >
                         <Box sx={{margin: '0 5px'}}>
-                          <Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: 'Jost'
+                            }}
+                          >
                             Showing
                           </Typography>
                         </Box>
@@ -692,14 +729,19 @@ const Results: NextPage = () => {
                           <Typography
                             sx={{
                               fontWeight: 700,
-                              fontSize: '18px'
+                              fontSize: '18px',
+                              fontFamily: 'Jost'
                             }}
                           >
                             1-20
                           </Typography>
                         </Box>
                         <Box sx={{margin: '0 5px'}}>
-                          <Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: 'Jost'
+                            }}
+                          >
                             of
                           </Typography>
                         </Box>
@@ -707,14 +749,19 @@ const Results: NextPage = () => {
                           <Typography
                             sx={{
                               fontWeight: 700,
-                              fontSize: '18px'
+                              fontSize: '18px',
+                              fontFamily: 'Jost'
                             }}
                           >
                             258
                           </Typography>
                         </Box>
                         <Box sx={{margin: '0 5px'}}>
-                          <Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: 'Jost'
+                            }}
+                          >
                             items
                           </Typography>
                         </Box>
@@ -756,7 +803,8 @@ const Results: NextPage = () => {
                             },
                             '.MuiDataGrid-columnHeaderTitle': {
                               fontSize: '19px',
-                              fontWeight: 700
+                              fontWeight: 700,
+                              fontFamily: 'Jost'
                             }
                         }}
                       />
@@ -796,7 +844,11 @@ const Results: NextPage = () => {
                               m: '0 10px'
                             }}
                           >
-                            <Typography>
+                            <Typography
+                              sx={{
+                                fontFamily: 'Jost'
+                              }}
+                            >
                               page
                             </Typography>
                           </Box>
@@ -822,14 +874,24 @@ const Results: NextPage = () => {
                             type="number"
                             InputLabelProps={{
                               shrink: true,
-                            }} />
+                            }}
+                            sx={{
+                              ".MuiOutlinedInput-root":{
+                                color: 'secondary.main'
+                              }
+                            }}
+                          />
                         </Box>
                         <Box
                           sx={{
                             m: '0 10px'
                           }}
                         >
-                        <Typography>
+                        <Typography
+                          sx={{
+                            fontFamily: 'Jost'
+                          }}
+                        >
                           out of 151
                         </Typography>
                       </Box>

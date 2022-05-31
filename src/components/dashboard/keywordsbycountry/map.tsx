@@ -43,7 +43,8 @@ const KeywordsByCountry = () => {
                     <Typography
                         variant="subtitle2"
                         sx={{
-                            fontSize: '32px'
+                            fontSize: '32px',
+                            fontFamily: 'Jost'
                         }}
                     >
                         Keywords by country

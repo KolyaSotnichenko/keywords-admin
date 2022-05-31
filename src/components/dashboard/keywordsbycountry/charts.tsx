@@ -99,7 +99,8 @@ const Charts = () => {
                         <Typography
                             variant="subtitle2"
                             sx={{
-                                fontSize: '32px'
+                                fontSize: '32px',
+                                fontFamily: 'Jost'
                             }}
                         >
                             Where does it lead
@@ -112,7 +113,8 @@ const Charts = () => {
                         <Typography
                             variant="subtitle2"
                             sx={{
-                                fontSize: '32px'
+                                fontSize: '32px',
+                                fontFamily: 'Jost'
                             }}
                         >
                             Key frequency
@@ -125,7 +127,8 @@ const Charts = () => {
                         <Typography
                             variant="subtitle2"
                             sx={{
-                                fontSize: '32px'
+                                fontSize: '32px',
+                                fontFamily: 'Jost'
                             }}
                         >
                             Complaints

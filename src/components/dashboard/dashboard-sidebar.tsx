@@ -257,7 +257,10 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
                 display: 'flex',
                 justifyContent: 'end',
                 pt: 2,
-                pr: 1
+                pr: 1,
+                '@media screen and (max-width: 480px)':{
+                  display: 'none'
+                }
               }}
             >
               <Box
@@ -289,7 +292,10 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
                   display: 'flex',
                   justifyContent: 'end',
                   pt: 2,
-                  pr: 1
+                  pr: 1,
+                  '@media screen and (max-width: 480px)':{
+                    display: 'none'
+                  }
                 }}
               >
                 <Box
@@ -372,6 +378,9 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
                     <Typography
                       color="inherit"
                       variant="subtitle1"
+                      sx={{
+                        fontFamily: 'Jost'
+                      }}
                     >
                       Acme Inc
                     </Typography>
@@ -384,7 +393,8 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
                         color="inherit"
                         variant="body2"
                         sx={{
-                          mr: '5px'
+                          mr: '5px',
+                          fontFamily: 'Jost'
                         }}
                       >
                         Your tier :
@@ -392,6 +402,9 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
                       <Typography
                         color="secondary"
                         variant="body2"
+                        sx={{
+                          fontFamily: 'Jost'
+                        }}
                       >
                         Premium
                       </Typography>
@@ -465,12 +478,18 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
               <Typography
                 color="neutral.100"
                 variant="h6"
+                sx={{
+                  fontFamily: 'Jost'
+                }}
               >
                 {t('Need Help?')}
               </Typography>
               <Typography
                 color="inherit"
                 variant="body2"
+                sx={{
+                  fontFamily: 'Jost'
+                }}
               >
                 {t('Check our docs')}
               </Typography>
@@ -484,13 +503,88 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
                   sx={{ 
                     mt: 2,
                     background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontFamily: 'Jost',
+                    fontSize: '18px'
                   }}
                   variant="contained"
                 >
                   {t('Documentation')}
                 </Button>
               </NextLink>
+            </Box>
+          )}
+          {isSidebarOpened ? (
+            <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              pt: 2,
+              pr: 1,
+              mb: '20px',
+              '@media screen and (min-width: 480px)':{
+                display: 'none'
+              }
+            }}
+          >
+            <Box
+              onClick={handleDrawerClose}
+              sx={{
+                borderRadius: '7px',
+                width: '24px',
+                height: '22px',
+                background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
+                textAlign: 'center',
+                cursor: 'pointer'
+              }}
+            >
+              <Box
+                sx={{
+                  // pt: '1px'
+                }}
+              >
+                <Box>
+                 <ChevronLeftIcon />
+                </Box>
+              </Box>
+            </Box>
+            
+          </Box>
+          ) : (
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                pt: 2,
+                pr: 1,
+                mb: '20px',
+                '@media screen and (min-width: 480px)':{
+                  display: 'none'
+                }
+              }}
+            >
+              <Box
+                onClick={handleDrawerOpen}
+                sx={{
+                  borderRadius: '7px',
+                  width: '24px',
+                  height: '22px',
+                  background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
+                  textAlign: 'center',
+                  cursor: 'pointer'
+                }}
+              >
+                <Box
+                  sx={{
+                    // pt: '2px'
+                  }}
+                >
+                  <Box>
+                  <ChevronRightIcon />
+                  </Box>
+                </Box>
+              </Box>
+              
             </Box>
           )}
         </Box>

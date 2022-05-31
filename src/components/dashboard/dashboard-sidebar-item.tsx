@@ -140,6 +140,7 @@ export const DashboardSidebarItem: FC<DashboardSidebarItemProps> = (props) => {
             color: active ? 'secondary.main' : 'inherit',
             fontWeight: active && 'fontWeightBold',
             justifyContent: title === undefined ? 'center' : 'start',
+            fontFamily: 'Jost',
             pl: 0,
             pr: 0,
             textAlign: 'left',

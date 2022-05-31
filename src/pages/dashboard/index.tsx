@@ -1,43 +1,40 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import image from 'next/image';
+import Image from 'next/image';
 import Head from 'next/head';
 import {
   Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
+
   Container,
-  Divider,
+
   Grid,
   MenuItem,
   Select,
-  TextField,
+
   Typography
 } from '@mui/material';
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
-import { OverviewBanner } from '../../components/dashboard/overview/overview-banner';
-import { OverviewCryptoWallet } from '../../components/dashboard/overview/overview-crypto-wallet';
-import { OverviewInbox } from '../../components/dashboard/overview/overview-inbox';
-import { OverviewLatestTransactions } from '../../components/dashboard/overview/overview-latest-transactions';
-import { OverviewPrivateWallet } from '../../components/dashboard/overview/overview-private-wallet';
-import { OverviewTotalBalance } from '../../components/dashboard/overview/overview-total-balance';
-import { OverviewTotalTransactions } from '../../components/dashboard/overview/overview-total-transactions';
-import { ArrowRight as ArrowRightIcon } from '../../icons/arrow-right';
-import { Briefcase as BriefcaseIcon } from '../../icons/briefcase';
-import { Download as DownloadIcon } from '../../icons/download';
-import { ExternalLink as ExternalLinkIcon } from '../../icons/external-link';
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../icons/information-circle-outlined';
-import { Reports as ReportsIcon } from '../../icons/reports';
-import { Users as UsersIcon } from '../../icons/users';
+// import { OverviewBanner } from '../../components/dashboard/overview/overview-banner';
+// import { OverviewCryptoWallet } from '../../components/dashboard/overview/overview-crypto-wallet';
+// import { OverviewInbox } from '../../components/dashboard/overview/overview-inbox';
+// import { OverviewLatestTransactions } from '../../components/dashboard/overview/overview-latest-transactions';
+// import { OverviewPrivateWallet } from '../../components/dashboard/overview/overview-private-wallet';
+// import { OverviewTotalBalance } from '../../components/dashboard/overview/overview-total-balance';
+// import { OverviewTotalTransactions } from '../../components/dashboard/overview/overview-total-transactions';
+// import { ArrowRight as ArrowRightIcon } from '../../icons/arrow-right';
+// import { Briefcase as BriefcaseIcon } from '../../icons/briefcase';
+// import { Download as DownloadIcon } from '../../icons/download';
+// import { ExternalLink as ExternalLinkIcon } from '../../icons/external-link';
+// import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../icons/information-circle-outlined';
+// import { Reports as ReportsIcon } from '../../icons/reports';
+// import { Users as UsersIcon } from '../../icons/users';
 import { gtm } from '../../lib/gtm';
 
 import { Home as HomeIcon } from '../../icons/home';
 import KeywordsByCountry from 'src/components/dashboard/keywordsbycountry/map';
 import Charts from 'src/components/dashboard/keywordsbycountry/charts';
-// import eyeIcon from '../../eye.png'
+import eyeIcon from '../../../public/eye.png'
 
 const Overview: NextPage = () => {
   const [displayBanner, setDisplayBanner] = useState<boolean>(true);
@@ -88,7 +85,11 @@ const Overview: NextPage = () => {
                     <HomeIcon fontSize="large" color='secondary' />
                   </Box>
                   <Box sx={{margin: '0 5px'}}>
-                    <Typography variant="h4" color="secondary">
+                    <Typography variant="h4" color="secondary"
+                      sx={{
+                        fontFamily: 'Jua'
+                      }}
+                    >
                       Overview
                     </Typography>
                   </Box>
@@ -114,21 +115,18 @@ const Overview: NextPage = () => {
                     position: 'relative',
                   }}
                 >
-                  {/* <Box 
+                  <Box 
                     sx={{
                       position: 'absolute',
                       zIndex: 2,
-                      left: 20,
-                      top: 10
+                      left: 14,
+                      top: 5
                     }}
                   >
-                    <HomeIcon fontSize='large' />
-                  </Box> */}
+                    <Image src={eyeIcon} width={45} height={45} />
+                  </Box>
                   <Select
                     MenuProps={{
-                      style: {
-                        color: 'secondary'
-                      },
                       PaperProps: {
                         style: {
                           background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(104, 79, 255, 0) 100%)',
@@ -141,16 +139,22 @@ const Overview: NextPage = () => {
                       height: '54px',
                       background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
                       borderRadius: '40px',
+                      '.css-1oibolj-MuiSvgIcon-root-MuiSelect-icon':{
+                        display: 'none'
+                      },
+                      '.css-z51fcz-MuiButtonBase-root-MuiMenuItem-root:hover':{
+                        color: 'secondary.main'
+                      }
                       
                     }}
                   >
-                    <MenuItem value="all project">
+                    <MenuItem value="all project" sx={{fontFamily: 'Jost'}}>
                       all projects
                     </MenuItem>
-                    <MenuItem value="projectX">
+                    <MenuItem value="projectX" sx={{fontFamily: 'Jost'}}>
                       projectX
                     </MenuItem>
-                    <MenuItem value="projectN">
+                    <MenuItem value="projectN" sx={{fontFamily: 'Jost'}}>
                       projectN
                     </MenuItem>
                   </Select>

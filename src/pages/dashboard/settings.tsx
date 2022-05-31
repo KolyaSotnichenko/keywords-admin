@@ -1,5 +1,6 @@
 import { Grid, Typography, Select, MenuItem, Card, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Switch, Tooltip } from "@mui/material";
 import { Box, Container } from "@mui/system";
+import Collapse from '@mui/material/Collapse';
 import { NextPage } from "next";
 import Image from "next/image";
 import { AuthGuard } from "src/components/authentication/auth-guard";
@@ -89,7 +90,11 @@ const Settings: NextPage = () => {
                         <Truck fontSize="large" color='secondary' />
                       </Box>
                       <Box sx={{margin: '0 5px'}}>
-                        <Typography variant="h4" color="secondary">
+                        <Typography variant="h4" color="secondary"
+                          sx={{
+                            fontFamily: 'Jua'
+                          }}
+                        >
                           Settings
                         </Typography>
                       </Box>
@@ -157,7 +162,7 @@ const Settings: NextPage = () => {
                               color={!activeSettings ? 'secondary.main' : '#ffffff'}
                               sx={{
                                 fontSize: '29px',
-                                
+                                fontFamily: 'Jost'
                               }}
                             >
                               Complaints
@@ -199,6 +204,7 @@ const Settings: NextPage = () => {
                             color={activeSettings ? 'secondary.main' : '#ffffff'}
                             sx={{
                               fontSize: '29px',
+                              fontFamily: 'Jost'
                             }}
                           >
                             Settings
@@ -213,7 +219,8 @@ const Settings: NextPage = () => {
                     <Typography
                       variant="subtitle2"
                       sx={{
-                        fontSize: '32px'
+                        fontSize: '32px',
+                        fontFamily: 'Jost'
                       }}
                     >
                       Add keys
@@ -258,7 +265,8 @@ const Settings: NextPage = () => {
                               <Typography
                                 sx={{
                                   fontSize: '20px',
-                                  fontWeight: 700
+                                  fontWeight: 700,
+                                  fontFamily: 'Jost'
                                 }}
                               >
                                 Project 1
@@ -285,7 +293,8 @@ const Settings: NextPage = () => {
                               <Typography
                                 sx={{
                                   fontSize: '20px',
-                                  fontWeight: 700
+                                  fontWeight: 700,
+                                  fontFamily: 'Jost'
                                 }}
                               >
                                 Project 2
@@ -308,7 +317,8 @@ const Settings: NextPage = () => {
                               <Typography
                                 sx={{
                                   fontSize: '20px',
-                                  fontWeight: 700
+                                  fontWeight: 700,
+                                  fontFamily: 'Jost'
                                 }}
                               >
                                 Project 3
@@ -396,7 +406,8 @@ const Settings: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '20px',
-                                    fontWeight: 700
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Geo 1
@@ -423,7 +434,8 @@ const Settings: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '20px',
-                                    fontWeight: 700
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Geo 2
@@ -446,7 +458,8 @@ const Settings: NextPage = () => {
                                 <Typography
                                   sx={{
                                     fontSize: '20px',
-                                    fontWeight: 700
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost'
                                   }}
                                 >
                                   Geo 3
@@ -485,7 +498,8 @@ const Settings: NextPage = () => {
                           <Typography
                             sx={{
                               fontSize: '20px',
-                              fontWeight: 700
+                              fontWeight: 700,
+                              fontFamily: 'Jost'
                             }}
                           >
                             ADD
@@ -522,7 +536,8 @@ const Settings: NextPage = () => {
                                     <Typography
                                       sx={{
                                         color: '#ffffff',
-                                        fontWeight: 700
+                                        fontWeight: 700,
+                                        fontFamily: 'Jost'
                                       }}
                                     >
                                       PROJECT
@@ -555,7 +570,8 @@ const Settings: NextPage = () => {
                                     <Typography
                                       sx={{
                                         color: '#ffffff',
-                                        fontWeight: 700
+                                        fontWeight: 700,
+                                        fontFamily: 'Jost'
                                       }}
                                     >
                                       KEY
@@ -587,7 +603,8 @@ const Settings: NextPage = () => {
                                     <Typography
                                       sx={{
                                         color: '#ffffff',
-                                        fontWeight: 700
+                                        fontWeight: 700,
+                                        fontFamily: 'Jost'
                                       }}
                                     >
                                       GEO
@@ -620,7 +637,8 @@ const Settings: NextPage = () => {
                                     <Typography
                                       sx={{
                                         color: '#ffffff',
-                                        fontWeight: 700
+                                        fontWeight: 700,
+                                        fontFamily: 'Jost'
                                       }}
                                     >
                                       DELETE
@@ -688,7 +706,8 @@ const Settings: NextPage = () => {
                                       <Typography
                                         sx={{
                                           fontSize: '16px',
-                                          fontWeight: 700
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
                                         }}
                                       >
                                         DELETE
@@ -733,7 +752,11 @@ const Settings: NextPage = () => {
                               m: '0 10px'
                             }}
                           >
-                            <Typography>
+                            <Typography
+                              sx={{
+                                fontFamily: 'Jost'
+                              }}
+                            >
                               page
                             </Typography>
                           </Box>
@@ -759,14 +782,24 @@ const Settings: NextPage = () => {
                               type="number"
                               InputLabelProps={{
                                 shrink: true,
-                              }} />
+                              }} 
+                              sx={{
+                                ".MuiOutlinedInput-root":{
+                                  color: 'secondary.main'
+                                }
+                              }}
+                            />
                           </Box>
                           <Box
                             sx={{
                               m: '0 10px'
                             }}
                           >
-                            <Typography>
+                            <Typography
+                              sx={{
+                                fontFamily: 'Jost'
+                              }}
+                            >
                               out of 22
                             </Typography>
                           </Box>
@@ -821,7 +854,8 @@ const Settings: NextPage = () => {
                               <Typography
                                   variant="subtitle2"
                                   sx={{
-                                      fontSize: '32px'
+                                      fontSize: '32px',
+                                      fontFamily: 'Jost'
                                   }}
                               >
                                   Filing a complaint
@@ -832,341 +866,349 @@ const Settings: NextPage = () => {
                             <Switch checked={checked} onChange={switchHandler} />
                           </Box>
                         </Box>
-                        { checked && (
-                          <>
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              margin: '0 -5px'
-                            }}
-                          >
-                            <Select
+                          <Collapse in={checked}>
+                            <Box
                               sx={{
-                                width: '521px',
-                                height: '56px',
-                                margin: '0 10px',
-                                '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
-                                  border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
-                                  borderRadius: '7px',
-                                  borderImageSlice: 1,
-                                  borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                                }
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                margin: '0 -5px'
                               }}
                             >
-                              <MenuItem value={1}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Image src={worldIcon} width={26} height={26} />
-                                  </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
-                                      sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
-                                      }}
-                                    >
-                                      WEBSITE 1
-                                    </Typography>
-                                  </Box>
-                                </Box>
-                              </MenuItem>
-                              <MenuItem value={2}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
+                              <Select
+                                sx={{
+                                  width: '521px',
+                                  height: '56px',
+                                  margin: '0 10px',
+                                  '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                    border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                    borderRadius: '7px',
+                                    borderImageSlice: 1,
+                                    borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  }
+                                }}
+                              >
+                                <MenuItem value={1}>
                                   <Box
                                     sx={{
-                                      margin: '0 5px',
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
                                     }}
                                   >
-                                    <Image src={worldIcon} width={26} height={26} />
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Image src={worldIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        WEBSITE 1
+                                      </Typography>
+                                    </Box>
                                   </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
+                                </MenuItem>
+                                <MenuItem value={2}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box
                                       sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
+                                        margin: '0 5px',
                                       }}
                                     >
-                                      WEBSITE 2
-                                    </Typography>
+                                      <Image src={worldIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        WEBSITE 2
+                                      </Typography>
+                                    </Box>
                                   </Box>
-                                </Box>
-                              </MenuItem>
-                              <MenuItem value={3}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Image src={worldIcon} width={26} height={26} />
+                                </MenuItem>
+                                <MenuItem value={3}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Image src={worldIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        WEBSITE 3
+                                      </Typography>
+                                    </Box>
                                   </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
+                                </MenuItem>
+                              </Select>
+                              <Select
+                                sx={{
+                                  width: '279px',
+                                  height: '56px',
+                                  margin: '0 10px',
+                                  '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                    border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                    borderRadius: '7px',
+                                    borderImageSlice: 1,
+                                    borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  }
+                                }}
+                              >
+                                <MenuItem value={1}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Image src={geoIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        GEO 1
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </MenuItem>
+                                <MenuItem value={2}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box
                                       sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
+                                        margin: '0 5px',
                                       }}
                                     >
-                                      WEBSITE 3
-                                    </Typography>
+                                      <Image src={geoIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        GEO 2
+                                      </Typography>
+                                    </Box>
                                   </Box>
-                                </Box>
-                              </MenuItem>
-                            </Select>
-                            <Select
+                                </MenuItem>
+                                <MenuItem value={3}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Image src={geoIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        GEO 3
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </MenuItem>
+                              </Select>
+                              <Select
+                                sx={{
+                                  width: '345px',
+                                  height: '56px',
+                                  margin: '0 10px',
+                                  '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                                    border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                                    borderRadius: '7px',
+                                    borderImageSlice: 1,
+                                    borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  }
+                                }}
+                              >
+                                <MenuItem value={1}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Image src={folderIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        PROJECT 1
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </MenuItem>
+                                <MenuItem value={2}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px',
+                                      }}
+                                    >
+                                      <Image src={folderIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        PROJECT 2
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </MenuItem>
+                                <MenuItem value={3}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Image src={folderIcon} width={26} height={26} />
+                                    </Box>
+                                    <Box sx={{ margin: '0 5px' }}>
+                                      <Typography
+                                        sx={{
+                                          fontSize: '20px',
+                                          fontWeight: 700,
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                        PROJECT 3
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </MenuItem>
+                              </Select>
+                            </Box>
+                            <TextField
+                              placeholder="Your note"
+                              multiline
+                              rows={3}
+                              // maxRows={4}
                               sx={{
-                                width: '279px',
-                                height: '56px',
-                                margin: '0 10px',
-                                '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
-                                  border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
-                                  borderRadius: '7px',
-                                  borderImageSlice: 1,
-                                  borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                                }
+                                width: '100%',
+                                mt: 3,
+                                background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(66, 141, 255, 0.31) 100%);',
+                                border: '1px solid #ffffff',
+                                borderRadius: '9px'
                               }}
-                            >
-                              <MenuItem value={1}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Image src={geoIcon} width={26} height={26} />
-                                  </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
-                                      sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
-                                      }}
-                                    >
-                                      GEO 1
-                                    </Typography>
-                                  </Box>
-                                </Box>
-                              </MenuItem>
-                              <MenuItem value={2}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box
-                                    sx={{
-                                      margin: '0 5px',
-                                    }}
-                                  >
-                                    <Image src={geoIcon} width={26} height={26} />
-                                  </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
-                                      sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
-                                      }}
-                                    >
-                                      GEO 2
-                                    </Typography>
-                                  </Box>
-                                </Box>
-                              </MenuItem>
-                              <MenuItem value={3}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Image src={geoIcon} width={26} height={26} />
-                                  </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
-                                      sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
-                                      }}
-                                    >
-                                      GEO 3
-                                    </Typography>
-                                  </Box>
-                                </Box>
-                              </MenuItem>
-                            </Select>
-                            <Select
-                              sx={{
-                                width: '345px',
-                                height: '56px',
-                                margin: '0 10px',
-                                '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
-                                  border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
-                                  borderRadius: '7px',
-                                  borderImageSlice: 1,
-                                  borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                                }
-                              }}
-                            >
-                              <MenuItem value={1}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Image src={folderIcon} width={26} height={26} />
-                                  </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
-                                      sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
-                                      }}
-                                    >
-                                      PROJECT 1
-                                    </Typography>
-                                  </Box>
-                                </Box>
-                              </MenuItem>
-                              <MenuItem value={2}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box
-                                    sx={{
-                                      margin: '0 5px',
-                                    }}
-                                  >
-                                    <Image src={folderIcon} width={26} height={26} />
-                                  </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
-                                      sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
-                                      }}
-                                    >
-                                      PROJECT 2
-                                    </Typography>
-                                  </Box>
-                                </Box>
-                              </MenuItem>
-                              <MenuItem value={3}>
-                                <Box
-                                  sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    flexDirection: 'row',
-                                    margin: '0 -5px'
-                                  }}
-                                >
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Image src={folderIcon} width={26} height={26} />
-                                  </Box>
-                                  <Box sx={{ margin: '0 5px' }}>
-                                    <Typography
-                                      sx={{
-                                        fontSize: '20px',
-                                        fontWeight: 700
-                                      }}
-                                    >
-                                      PROJECT 3
-                                    </Typography>
-                                  </Box>
-                                </Box>
-                              </MenuItem>
-                            </Select>
-                          </Box>
-                          <TextField
-                            placeholder="Your note"
-                            multiline
-                            rows={3}
-                            // maxRows={4}
-                            sx={{
-                              width: '100%',
-                              mt: 3,
-                              background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(66, 141, 255, 0.31) 100%);',
-                              border: '1px solid #ffffff',
-                              borderRadius: '9px'
-                            }}
-                          />
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              flexDirection: 'row',
-                              justifyContent: 'end',
-                              mt: 3
-                            }}
-                          >
+                            />
                             <Box
                               sx={{
                                 display: 'flex',
                                 flexDirection: 'row',
-                                width: '171px',
-                                height: '45px',
-                                background: 'linear-gradient(90deg, #3CFFF9 0.36%, #00FF66 100.36%);',
-                                borderRadius: '9px',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                margin: '0 -5px'
+                                justifyContent: 'end',
+                                mt: 3
                               }}
                             >
                               <Box
                                 sx={{
-                                  margin: '0 5px',
-                                  pt: 1
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  width: '171px',
+                                  height: '45px',
+                                  background: 'linear-gradient(90deg, #3CFFF9 0.36%, #00FF66 100.36%);',
+                                  borderRadius: '9px',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  margin: '0 -5px'
                                 }}
                               >
-                                <Image src={addIcon} width={23} height={23} />
-                              </Box>
-                              <Box
-                                sx={{
-                                  margin: '0 5px'
-                                }}
-                              >
-                                <Typography
+                                <Box
                                   sx={{
-                                    fontSize: '20px',
-                                    fontWeight: 700
+                                    margin: '0 5px',
+                                    pt: 1
                                   }}
                                 >
-                                  ADD
-                                </Typography>
+                                  <Image src={addIcon} width={23} height={23} />
+                                </Box>
+                                <Box
+                                  sx={{
+                                    margin: '0 5px'
+                                  }}
+                                >
+                                  <Typography
+                                    sx={{
+                                      fontSize: '20px',
+                                      fontWeight: 700,
+                                      fontFamily: 'Jost'
+                                    }}
+                                  >
+                                    ADD
+                                  </Typography>
+                                </Box>
                               </Box>
+                              
                             </Box>
-                            
-                          </Box>
-                          </>
-                        )}
+                          </Collapse>
                       </Card>
                       <Card sx={{p: 3, mt: 5, background: '#222543', borderRadius: '30px'}}>
                         <Box
@@ -1192,7 +1234,8 @@ const Settings: NextPage = () => {
                               <Typography
                                   variant="subtitle2"
                                   sx={{
-                                      fontSize: '32px'
+                                      fontSize: '32px',
+                                      fontFamily: 'Jost'
                                   }}
                               >
                                   White list
@@ -1228,7 +1271,8 @@ const Settings: NextPage = () => {
                                         <Typography
                                           sx={{
                                             color: '#ffffff',
-                                            fontWeight: 700
+                                            fontWeight: 700,
+                                            fontFamily: 'Jost'
                                           }}
                                         >
                                           WEBSITE
@@ -1260,7 +1304,8 @@ const Settings: NextPage = () => {
                                         <Typography
                                           sx={{
                                             color: '#ffffff',
-                                            fontWeight: 700
+                                            fontWeight: 700,
+                                            fontFamily: 'Jost'
                                           }}
                                         >
                                           GEO
@@ -1292,7 +1337,8 @@ const Settings: NextPage = () => {
                                         <Typography
                                           sx={{
                                             color: '#ffffff',
-                                            fontWeight: 700
+                                            fontWeight: 700,
+                                            fontFamily: 'Jost'
                                           }}
                                         >
                                           PROJECT
@@ -1335,7 +1381,8 @@ const Settings: NextPage = () => {
                                           <Typography
                                             sx={{
                                               color: '#ffffff',
-                                              fontWeight: 700
+                                              fontWeight: 700,
+                                              fontFamily: 'Jost'
                                             }}
                                           >
                                             NOTES
@@ -1412,7 +1459,11 @@ const Settings: NextPage = () => {
                                 m: '0 10px'
                               }}
                             >
-                              <Typography>
+                              <Typography
+                                sx={{
+                                  fontFamily: 'Jost'
+                                }}
+                              >
                                 page
                               </Typography>
                             </Box>
@@ -1438,14 +1489,24 @@ const Settings: NextPage = () => {
                                 type="number"
                                 InputLabelProps={{
                                   shrink: true,
-                                }} />
+                                }} 
+                                sx={{
+                                  ".MuiOutlinedInput-root":{
+                                    color: 'secondary.main'
+                                  }
+                                }}
+                              />
                             </Box>
                             <Box
                               sx={{
                                 m: '0 10px'
                               }}
                             >
-                              <Typography>
+                              <Typography
+                                sx={{
+                                  fontFamily: 'Jost'
+                                }}
+                              >
                                 out of 22
                               </Typography>
                             </Box>

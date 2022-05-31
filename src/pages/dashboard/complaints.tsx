@@ -82,7 +82,11 @@ const Complaints: NextPage = () => {
                       <ChartPieIcon fontSize="large" color='secondary' />
                     </Box>
                     <Box sx={{margin: '0 5px'}}>
-                      <Typography variant="h4" color="secondary">
+                      <Typography variant="h4" color="secondary"
+                        sx={{
+                          fontFamily: 'Jua'
+                        }}
+                      >
                         Complaints
                       </Typography>
                     </Box>
@@ -189,6 +193,11 @@ const Complaints: NextPage = () => {
                         InputLabelProps={{
                           shrink: true,
                         }}
+                        sx={{
+                          ".MuiOutlinedInput-root":{
+                            color: 'secondary.main'
+                          }
+                        }}
                       />
                     </Box>
                     <Box
@@ -228,7 +237,7 @@ const Complaints: NextPage = () => {
                       {rows2.map((row) => (
                         <TableRow
                           key={row.domain}
-                          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                          sx={{ '&:last-child td, &:last-child th': { border: 0 }, '&:hover': {background: 'rgba(60, 144, 255, 0.3);'} }}
                         >
                           <TableCell component="th" scope="row">
                             {row.domain}
@@ -297,6 +306,11 @@ const Complaints: NextPage = () => {
                         type="number"
                         InputLabelProps={{
                           shrink: true,
+                        }}
+                        sx={{
+                          ".MuiOutlinedInput-root":{
+                            color: 'secondary.main'
+                          }
                         }}
                       />
                     </Box>
