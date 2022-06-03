@@ -11,6 +11,8 @@ import { HomeFeatures } from '../components/home/home-features';
 import { HomeTestimonials } from '../components/home/home-testimonials';
 import { gtm } from '../lib/gtm';
 import Overview from './dashboard';
+import { AuthGuard } from 'src/components/authentication/auth-guard';
+import { DashboardLayout } from 'src/components/dashboard/dashboard-layout';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -25,7 +27,7 @@ const Home: NextPage = () => {
         </title>
       </Head>
       <main>
-        <HomeHero />
+        {/* <HomeHero />
         <Divider />
         <HomeDevelopers />
         <Divider />
@@ -33,16 +35,22 @@ const Home: NextPage = () => {
         <HomeTestimonials />
         <HomeFeatures />
         <Divider />
-        <HomeClients />
+        <HomeClients /> */}
+        <Overview />
       </main>
     </>
   );
 };
 
 Home.getLayout = (page) => (
-  <MainLayout>
-    {page}
-  </MainLayout>
+  // <MainLayout>
+  //   {page}
+  // </MainLayout>
+  <AuthGuard>
+    <DashboardLayout>
+      {page}
+    </DashboardLayout>
+  </AuthGuard>
 );
 
 export default Home;
