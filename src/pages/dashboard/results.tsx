@@ -59,6 +59,99 @@ const columns: GridColDef[] = [
 ];
 
 const rows = [
+  {
+    id: 0,
+    siteSelect: (
+      <>
+        <Select>
+          <MenuItem value={1}>
+            text
+          </MenuItem>
+          <MenuItem value={2}>
+            text
+          </MenuItem>
+          <MenuItem value={3}>
+            text
+          </MenuItem>
+        </Select>
+      </>
+    ),
+    publisherSelect: (
+      <>
+        <Select>
+          <MenuItem value={1}>
+            text
+          </MenuItem>
+          <MenuItem value={2}>
+            text
+          </MenuItem>
+          <MenuItem value={3}>
+            text
+          </MenuItem>
+        </Select>
+      </>
+    ),
+    keywordsSelect: (
+      <>
+        <Select>
+          <MenuItem value={1}>
+            text
+          </MenuItem>
+          <MenuItem value={2}>
+            text
+          </MenuItem>
+          <MenuItem value={3}>
+            text
+          </MenuItem>
+        </Select>
+      </>
+    ),
+    textSelect: (
+      <>
+        <Select>
+          <MenuItem value={1}>
+            text
+          </MenuItem>
+          <MenuItem value={2}>
+            text
+          </MenuItem>
+          <MenuItem value={3}>
+            text
+          </MenuItem>
+        </Select>
+      </>
+    ),
+    countriesSelect: (
+      <>
+        <Select>
+          <MenuItem value={1}>
+            text
+          </MenuItem>
+          <MenuItem value={2}>
+            text
+          </MenuItem>
+          <MenuItem value={3}>
+            text
+          </MenuItem>
+        </Select>
+      </>
+    ),
+    adsSelect: (
+      <>
+        <Select>
+          <MenuItem value={1}>
+            text
+          </MenuItem>
+          <MenuItem value={2}>
+            text
+          </MenuItem>
+          <MenuItem value={3}>
+            text
+          </MenuItem>
+        </Select>
+      </>
+    )
+  },
   { id: 1,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
   { id: 2,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
   { id: 3,site: 'site', publisher: 'Text', keywords: 'Text', text: 'Text', countries: 'Text', ads: 'Ads'},
@@ -805,6 +898,12 @@ const Results: NextPage = () => {
                               fontSize: '19px',
                               fontWeight: 700,
                               fontFamily: 'Jost'
+                            },
+                            '.MuiDataGrid-columnHeader:nth-child(even)': {
+                              background: 'linear-gradient(180deg, rgba(60, 144, 255, 0.3) 0%, rgba(190, 53, 255, 0.3) 100%)'
+                            },
+                            '.MuiDataGrid-cell:nth-child(even)': {
+                              background: 'linear-gradient(90deg, rgba(45, 128, 255, 0.3) -0.19%, rgba(190, 53, 255, 0.3) 99.81%)'
                             }
                         }}
                       />

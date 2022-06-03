@@ -17,9 +17,11 @@ import deleteIcon from '../../../public/delete.png'
 import pencilIcon from '../../../public/pencil.png'
 import worldIcon from '../../../public/world.png'
 import documentIcon from '../../../public/document.png'
+import tooltipImage from '../../../public/tooltipImage.png'
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useState } from "react";
 import Head from "next/head";
+
 
 
 function createData(
@@ -148,10 +150,16 @@ const Settings: NextPage = () => {
                       >
                         <Box
                           sx={{
-                            margin: '0 5px'
+                            margin: '0 5px',
+                            '.MuiSvgIcon-root': {
+                              color: 'secondary'
+                            }
                           }}
                         >
-                          <ChartPie fontSize="large" color='secondary' />
+                          <ChartPie 
+                            fontSize="large" 
+                            color='secondary' 
+                          />
                         </Box>
                         <Box
                           sx={{
@@ -239,6 +247,9 @@ const Settings: NextPage = () => {
                             borderRadius: '7px',
                             borderImageSlice: 1,
                             borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            '.MuiMenuItem-gutters:hover':{
+                              color: 'secondary.main'
+                            }
                           }
                         }}
                         MenuProps={{
@@ -251,80 +262,242 @@ const Settings: NextPage = () => {
                         }}
                       >
                         <MenuItem value={1}>
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              flexDirection: 'row',
-                              margin: '0 -5px'
-                            }}
-                          >
-                            <Box sx={{ margin: '0 5px' }}>
-                              <Image src={folderIcon} width={23} height={23} />
-                            </Box>
-                            <Box sx={{ margin: '0 5px' }}>
-                              <Typography
-                                sx={{
-                                  fontSize: '20px',
-                                  fontWeight: 700,
-                                  fontFamily: 'Jost'
-                                }}
-                              >
-                                Project 1
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </MenuItem>
-                        <MenuItem value={2}>
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              flexDirection: 'row',
-                              margin: '0 -5px'
-                            }}
+                          <Tooltip 
+                            title={
+                              <>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      width: '205px',
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Typography
+                                      sx={{
+                                        fontSize: '14px',
+                                        fontFamily: 'Jost'
+                                      }}
+                                    >
+                                    BetAmo Обзор казино и бонусы  (это заголовок)
+                                    BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйте захватывающие слоты и другие игры! Бонусы и акции казино. К сожалению, ..BetAmo Обзор казино и бонусы  (это заголовок)
+                                    BetAmo было основано в . Имеет лицензии от: 
+
+                                    ttttttttttttttxshsh
+                                    hrhrhr
+                                    hrjry
+                                    sdjtyh
+                                    dhd5
+                                    BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйтонусы и акции казино. К сожалению, ..
+                                    </Typography>
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={tooltipImage} width={97} height={512} />
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={tooltipImage} width={97} height={512} />
+                                  </Box>
+                                </Box>
+                              </>
+                            }
+                            placement="right-end"
                           >
                             <Box
                               sx={{
-                                margin: '0 5px',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
                               }}
                             >
-                              <Image src={folderIcon} width={23} height={23} />
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={folderIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost'
+                                  }}
+                                >
+                                  Project 1
+                                </Typography>
+                              </Box>
                             </Box>
-                            <Box sx={{ margin: '0 5px' }}>
-                              <Typography
+                          </Tooltip>
+                        </MenuItem>
+                        <MenuItem value={2}>
+                        <Tooltip 
+                            title={
+                              <>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      width: '205px',
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Typography
+                                      sx={{
+                                        fontSize: '14px',
+                                        fontFamily: 'Jost'
+                                      }}
+                                    >
+                                    BetAmo Обзор казино и бонусы  (это заголовок)
+                                    BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйте захватывающие слоты и другие игры! Бонусы и акции казино. К сожалению, ..BetAmo Обзор казино и бонусы  (это заголовок)
+                                    BetAmo было основано в . Имеет лицензии от: 
+
+                                    ttttttttttttttxshsh
+                                    hrhrhr
+                                    hrjry
+                                    sdjtyh
+                                    dhd5
+                                    BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйтонусы и акции казино. К сожалению, ..
+                                    </Typography>
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={tooltipImage} width={97} height={512} />
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={tooltipImage} width={97} height={512} />
+                                  </Box>
+                                </Box>
+                              </>
+                            }
+                            placement="right-end"
+                          >
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box
                                 sx={{
-                                  fontSize: '20px',
-                                  fontWeight: 700,
-                                  fontFamily: 'Jost'
+                                  margin: '0 5px',
                                 }}
                               >
-                                Project 2
-                              </Typography>
+                                <Image src={folderIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost'
+                                  }}
+                                >
+                                  Project 2
+                                </Typography>
+                              </Box>
                             </Box>
-                          </Box>
+                          </Tooltip>
                         </MenuItem>
                         <MenuItem value={3}>
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              flexDirection: 'row',
-                              margin: '0 -5px'
-                            }}
+                        <Tooltip 
+                            title={
+                              <>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    margin: '0 -5px'
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      width: '205px',
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Typography
+                                      sx={{
+                                        fontSize: '14px',
+                                        fontFamily: 'Jost'
+                                      }}
+                                    >
+                                    BetAmo Обзор казино и бонусы  (это заголовок)
+                                    BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйте захватывающие слоты и другие игры! Бонусы и акции казино. К сожалению, ..BetAmo Обзор казино и бонусы  (это заголовок)
+                                    BetAmo было основано в . Имеет лицензии от: 
+
+                                    ttttttttttttttxshsh
+                                    hrhrhr
+                                    hrjry
+                                    sdjtyh
+                                    dhd5
+                                    BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйтонусы и акции казино. К сожалению, ..
+                                    </Typography>
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={tooltipImage} width={97} height={512} />
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      margin: '0 5px'
+                                    }}
+                                  >
+                                    <Image src={tooltipImage} width={97} height={512} />
+                                  </Box>
+                                </Box>
+                              </>
+                            }
+                            placement="right-end"
                           >
-                            <Box sx={{ margin: '0 5px' }}>
-                              <Image src={folderIcon} width={23} height={23} />
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={folderIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost'
+                                  }}
+                                >
+                                  Project 3
+                                </Typography>
+                              </Box>
                             </Box>
-                            <Box sx={{ margin: '0 5px' }}>
-                              <Typography
-                                sx={{
-                                  fontSize: '20px',
-                                  fontWeight: 700,
-                                  fontFamily: 'Jost'
-                                }}
-                              >
-                                Project 3
-                              </Typography>
-                            </Box>
-                          </Box>
+                          </Tooltip>
                         </MenuItem>
                       </Select>
                       <Box
