@@ -15,7 +15,6 @@ const KeywordsByCountry = () => {
 
     const chartOptions: ApexOptions = {
         chart: {
-            type: 'bar',
             toolbar: {
                 show: false
             }
@@ -106,6 +105,7 @@ const KeywordsByCountry = () => {
                 <Box
                 >
                     <Chart 
+                        type='bar'
                         height={213} 
                         options={chartOptions}
                         series={chartSeries}

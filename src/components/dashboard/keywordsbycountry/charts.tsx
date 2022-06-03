@@ -9,7 +9,6 @@ const Charts = () => {
     const chartRadialBarOptions: ApexOptions = {
         chart: {
             height: 253,
-            type: 'radialBar',
             toolbar: {
                 show: false
             }
@@ -23,6 +22,7 @@ const Charts = () => {
                 value: {
                   fontSize: '16px',
                 },
+                
                 // total: {
                 //   show: true,
                 //   label: 'Total',
@@ -34,15 +34,14 @@ const Charts = () => {
               }
             }
         },
-        labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
+        labels: ['has brand', 'no brand'],
     }
 
-    const chartRadialBarSeries = [44, 55, 67, 83]
+    const chartRadialBarSeries = [44, 55]
 
     const chartPieOptions: ApexOptions = {
         chart: {
             width: 253,
-            type: 'pie',
             toolbar: {
                 show: false
             }
@@ -65,7 +64,6 @@ const Charts = () => {
     const chartDonutOptions: ApexOptions = {
         chart: {
             width: 253,
-            type: 'donut',
             toolbar: {
                 show: false
             }
@@ -106,7 +104,7 @@ const Charts = () => {
                             Where does it lead
                         </Typography>
                         <Box>
-                            <Chart options={chartRadialBarOptions} series={chartRadialBarSeries} />
+                            <Chart type='radialBar' options={chartRadialBarOptions} series={chartRadialBarSeries} />
                         </Box>
                     </Box>
                     <Box>
@@ -120,7 +118,7 @@ const Charts = () => {
                             Key frequency
                         </Typography>
                         <Box>
-                            <Chart options={chartPieOptions} series={chartPieSeries} />
+                            <Chart type='pie' options={chartPieOptions} series={chartPieSeries} />
                         </Box>
                     </Box>
                     <Box>
@@ -134,7 +132,7 @@ const Charts = () => {
                             Complaints
                         </Typography>
                         <Box>
-                            <Chart options={chartDonutOptions} series={chartDonutSeries} />
+                            <Chart type='donut' options={chartDonutOptions} series={chartDonutSeries} />
                         </Box>
                     </Box>
                 </Box>
