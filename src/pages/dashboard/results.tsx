@@ -18,6 +18,7 @@ import exportIcon from '../../../public/export.png'
 
 import { ChartBar } from "src/icons/chart-bar";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const columns: GridColDef[] = [
   { 
@@ -270,6 +271,7 @@ const Results: NextPage = () => {
                         }}
                       >
                         <Select
+                          IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                           sx={{
                             height: '37px',
                             width: '300px',
@@ -281,6 +283,13 @@ const Results: NextPage = () => {
                             },
                             '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
                               width: '230px'
+                            },
+                          }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                              }
                             }
                           }}
                         >
@@ -395,6 +404,7 @@ const Results: NextPage = () => {
                       </Box>
                       <Box>
                         <Select
+                          IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                           sx={{
                             height: '37px',
                             width: '142px',
@@ -403,6 +413,13 @@ const Results: NextPage = () => {
                               borderRadius: '7px',
                               borderImageSlice: 1,
                               borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            }
+                          }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                              }
                             }
                           }}
                         >
@@ -455,6 +472,7 @@ const Results: NextPage = () => {
                       </Box>
                       <Box>
                         <Select
+                          IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                           sx={{
                             height: '37px',
                             width: '174px',
@@ -522,6 +540,7 @@ const Results: NextPage = () => {
                       </Box>
                       <Box>
                         <Select
+                          IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                           sx={{
                             height: '37px',
                             width: '300px',
@@ -643,6 +662,7 @@ const Results: NextPage = () => {
                         </Box>
                         <Box sx={{margin: '0 5px'}}>
                           <Select
+                            IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                             sx={{
                               height: '25px',
                               width: '80px',
@@ -655,6 +675,16 @@ const Results: NextPage = () => {
                               // '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
                               //   width: '230px'
                               // }
+                              '.css-3gw1fi-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+                                pr: '10px !important'
+                              },
+                            }}
+                            MenuProps={{
+                              PaperProps: {
+                                style: {
+                                  background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                                }
+                              }
                             }}
                           >
                             <MenuItem value={1}>
@@ -740,6 +770,7 @@ const Results: NextPage = () => {
                         </Box>
                         <Box sx={{margin: '0 5px'}}>
                           <Select
+                            IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                             sx={{
                               height: '25px',
                               width: '110px',
@@ -752,6 +783,16 @@ const Results: NextPage = () => {
                               // '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
                               //   width: '230px'
                               // }
+                              '.css-3gw1fi-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+                                pr: '10px !important'
+                              },
+                            }}
+                            MenuProps={{
+                              PaperProps: {
+                                style: {
+                                  background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                                }
+                              }
                             }}
                           >
                             <MenuItem value={1}>

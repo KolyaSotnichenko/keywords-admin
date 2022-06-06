@@ -22,6 +22,8 @@ import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useState } from "react";
 import Head from "next/head";
 
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 
 function createData(
@@ -212,7 +214,7 @@ const Settings: NextPage = () => {
                         >
                           <ChartPie 
                             fontSize="large" 
-                            color='secondary' 
+                            color={!activeSettings ? 'secondary' : 'white'}
                           />
                         </Box>
                         <Box
@@ -307,10 +309,10 @@ const Settings: NextPage = () => {
                       }}
                     >
                       <Select
+                        IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                         sx={{
                           height: '41px',
                           '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
-                            border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
                             borderRadius: '7px',
                             borderImageSlice: 1,
                             borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
@@ -620,6 +622,7 @@ const Settings: NextPage = () => {
                         sx={{}}
                       >
                         <Select
+                          IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                           sx={{
                             height: '41px',
                             width: '198px',
@@ -628,6 +631,13 @@ const Settings: NextPage = () => {
                               borderRadius: '7px',
                               borderImageSlice: 1,
                               borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            },
+                          }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                              }
                             }
                           }}
                         >
@@ -650,7 +660,7 @@ const Settings: NextPage = () => {
                                     fontFamily: 'Jost'
                                   }}
                                 >
-                                  Geo 1
+                                  GEO 1
                                 </Typography>
                               </Box>
                             </Box>
@@ -678,7 +688,7 @@ const Settings: NextPage = () => {
                                     fontFamily: 'Jost'
                                   }}
                                 >
-                                  Geo 2
+                                  GEO 2
                                 </Typography>
                               </Box>
                             </Box>
@@ -702,7 +712,7 @@ const Settings: NextPage = () => {
                                     fontFamily: 'Jost'
                                   }}
                                 >
-                                  Geo 3
+                                  GEO 3
                                 </Typography>
                               </Box>
                             </Box>
@@ -747,7 +757,8 @@ const Settings: NextPage = () => {
                         </Box>
                       </Box>
                     </Box>
-                  </Card><Card sx={{ p: 5, pb: 3, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px' }}>
+                  </Card>
+                  <Card sx={{ p: 5, pb: 3, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px' }}>
                       <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650, border: '1px solid white' }} aria-label="simple table">
                           <TableHead sx={{ border: '1px solid white' }}>
@@ -1115,6 +1126,7 @@ const Settings: NextPage = () => {
                               }}
                             >
                               <Select
+                                IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                                 sx={{
                                   width: '521px',
                                   height: '56px',
@@ -1124,6 +1136,13 @@ const Settings: NextPage = () => {
                                     borderRadius: '7px',
                                     borderImageSlice: 1,
                                     borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  }
+                                }}
+                                MenuProps={{
+                                  PaperProps: {
+                                    style: {
+                                      background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                                    }
                                   }
                                 }}
                               >
@@ -1206,6 +1225,7 @@ const Settings: NextPage = () => {
                                 </MenuItem>
                               </Select>
                               <Select
+                                IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                                 sx={{
                                   width: '279px',
                                   height: '56px',
@@ -1215,6 +1235,13 @@ const Settings: NextPage = () => {
                                     borderRadius: '7px',
                                     borderImageSlice: 1,
                                     borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  }
+                                }}
+                                MenuProps={{
+                                  PaperProps: {
+                                    style: {
+                                      background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                                    }
                                   }
                                 }}
                               >
@@ -1297,6 +1324,7 @@ const Settings: NextPage = () => {
                                 </MenuItem>
                               </Select>
                               <Select
+                                IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                                 sx={{
                                   width: '345px',
                                   height: '56px',
@@ -1306,6 +1334,13 @@ const Settings: NextPage = () => {
                                     borderRadius: '7px',
                                     borderImageSlice: 1,
                                     borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  }
+                                }}
+                                MenuProps={{
+                                  PaperProps: {
+                                    style: {
+                                      background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                                    }
                                   }
                                 }}
                               >
