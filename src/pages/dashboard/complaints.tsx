@@ -66,9 +66,38 @@ const Complaints: NextPage = () => {
           component="main"
           sx={{
             flexGrow: 1,
-            py: 8
+            py: 8,
+            '@media screen and (max-width: 480px)': {
+              py: 0
+            }
           }}
         >
+          <Box 
+            sx={{
+              display: 'none', 
+              alignItems: 'center', 
+              margin: '0 -5px',
+              '@media screen and (max-width: 480px)':{
+                display: 'flex',
+                pl: 11,
+                pt: '14px',
+                height: '70px',
+                background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(66, 141, 255, 0.31) 100%)'
+              }
+            }}>
+            <Box sx={{margin: '0 5px'}}>
+              <ChartPieIcon fontSize="large" color='secondary' />
+            </Box>
+            <Box sx={{margin: '0 5px'}}>
+              <Typography variant="h4" color="secondary"
+                sx={{
+                  fontFamily: 'Jua'
+                }}
+              >
+                Complaints
+              </Typography>
+            </Box>
+          </Box>
           <Container maxWidth="xl">
             <Box sx={{ mb: 4 }}>
               <Grid
@@ -76,7 +105,13 @@ const Complaints: NextPage = () => {
                 justifyContent="space-between"
                 spacing={3}
               >
-                <Grid item>
+                <Grid item 
+                  sx={{
+                    '@media screen and (max-width: 480px)': {
+                      display: 'none'
+                    }
+                  }}
+                >
                   <Box sx={{display: 'flex', alignItems: 'center', margin: '0 -5px'}}>
                     <Box sx={{margin: '0 5px'}}>
                       <ChartPieIcon fontSize="large" color='secondary' />

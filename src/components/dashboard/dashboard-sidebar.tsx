@@ -425,7 +425,10 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
           <Divider
             sx={{
               borderColor: '#2D3748', // dark divider
-              my: 3
+              my: 3,
+              '@media screen and (max-width: 480px)': {
+                mt: '-5px'
+              }
             }}
           />
           {isSidebarOpened && (

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material"
+import { Box, MenuItem, Select, Typography } from "@mui/material"
 import Card from "@mui/material/Card"
 import Image from "next/image"
 
@@ -9,6 +9,9 @@ import asia from '../../../../public/static/countries/asia.png'
 import africa from '../../../../public/static/countries/africa.png'
 import { Chart } from "src/components/chart"
 import { ApexOptions } from "apexcharts"
+
+import eyeIcon from '../../../../public/eye.png'
+
 
 
 const KeywordsByCountry = () => {
@@ -38,7 +41,13 @@ const KeywordsByCountry = () => {
     return (
         <>
             <Card sx={{p: 5, background: '#222543', borderRadius: '30px', height: '943px'}}>
-                <Box>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                    }}
+                >
                     <Typography
                         variant="subtitle2"
                         sx={{
@@ -48,6 +57,58 @@ const KeywordsByCountry = () => {
                     >
                         Keywords by country
                     </Typography>
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        '@media screen and (min-width: 480px)': {
+                          display: 'none'
+                        }
+                      }}
+                    >
+                      <Box 
+                        sx={{
+                          position: 'absolute',
+                          zIndex: 2,
+                          left: 7,
+                          top: 3
+                        }}
+                      >
+                        <Image src={eyeIcon} width={24} height={24} />
+                      </Box>
+                      <Select
+                        MenuProps={{
+                          PaperProps: {
+                            style: {
+                              background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(104, 79, 255, 0) 100%)',
+                              filter: 'drop-shadow(7.91971px 7.91971px 15.8394px rgba(0, 0, 0, 0.25))',
+                            }
+                          }
+                        }}
+                        sx={{
+                          width: '38px',
+                          height: '29px',
+                          background: 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)',
+                          borderRadius: '40px',
+                          '.css-1oibolj-MuiSvgIcon-root-MuiSelect-icon':{
+                            display: 'none'
+                          },
+                          '.css-z51fcz-MuiButtonBase-root-MuiMenuItem-root:hover':{
+                            color: 'secondary.main'
+                          }
+                          
+                        }}
+                      >
+                        <MenuItem value="all project" sx={{fontFamily: 'Jost'}}>
+                          all projects
+                        </MenuItem>
+                        <MenuItem value="projectX" sx={{fontFamily: 'Jost'}}>
+                          projectX
+                        </MenuItem>
+                        <MenuItem value="projectN" sx={{fontFamily: 'Jost'}}>
+                          projectN
+                        </MenuItem>
+                      </Select>
+                    </Box>
                 </Box>
                 <Box
                     sx={{
