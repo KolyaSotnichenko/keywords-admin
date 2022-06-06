@@ -52,7 +52,10 @@ const KeywordsByCountry = () => {
                         variant="subtitle2"
                         sx={{
                             fontSize: '32px',
-                            fontFamily: 'Jost'
+                            fontFamily: 'Jost',
+                            '@media screen and (max-width: 480px)': {
+                              fontSize: '20px'
+                            }
                         }}
                     >
                         Keywords by country

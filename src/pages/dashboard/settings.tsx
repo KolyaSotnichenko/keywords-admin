@@ -164,7 +164,19 @@ const Settings: NextPage = () => {
                   md={12}
                   xs={12}
                 >
-                  <Card sx={{ height: '75px',display: 'flex',justifyContent: 'space-between', mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px'}}>
+                  <Card 
+                    sx={{ 
+                      height: '75px',
+                      display: 'flex',
+                      justifyContent: 'space-between', 
+                      mt: 5, 
+                      background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', 
+                      borderRadius: '30px',
+                      '@media screen and (max-width: 480px)': {
+                        height: '42px'
+                      }
+                    }}
+                  >
                     <Box
                       onClick={() => setActiveSettings(false)}
                       sx={{
@@ -174,7 +186,10 @@ const Settings: NextPage = () => {
                         p: 2,
                         cursor: 'pointer',
                         background: !activeSettings ? 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)' : 'none',
-                        boxShadow: !activeSettings ? '3.24394px 3.24394px 3.24394px rgba(0, 0, 0, 0.5)' : 'none'
+                        boxShadow: !activeSettings ? '3.24394px 3.24394px 3.24394px rgba(0, 0, 0, 0.5)' : 'none',
+                        '@media screen and (max-width: 480px)': {
+                          p: 0
+                        }
                       }}
                     >
                       <Box
@@ -188,6 +203,10 @@ const Settings: NextPage = () => {
                             margin: '0 5px',
                             '.MuiSvgIcon-root': {
                               color: 'secondary'
+                            },
+                            '@media screen and (max-width: 480px)': {
+                              width: '36px',
+                              height: '35px'
                             }
                           }}
                         >
@@ -205,7 +224,10 @@ const Settings: NextPage = () => {
                               color={!activeSettings ? 'secondary.main' : '#ffffff'}
                               sx={{
                                 fontSize: '29px',
-                                fontFamily: 'Jost'
+                                fontFamily: 'Jost',
+                                '@media screen and (max-width: 480px)': {
+                                  fontSize: '23px'
+                                }
                               }}
                             >
                               Complaints
@@ -222,7 +244,10 @@ const Settings: NextPage = () => {
                         p: 2,
                         cursor: 'pointer',
                         background: activeSettings ? 'linear-gradient(90deg, #B14FFF 0%, #3C90FF 100%)' : 'none',
-                        boxShadow: activeSettings ? '3.24394px 3.24394px 3.24394px rgba(0, 0, 0, 0.5)' : 'none'
+                        boxShadow: activeSettings ? '3.24394px 3.24394px 3.24394px rgba(0, 0, 0, 0.5)' : 'none',
+                        '@media screen and (max-width: 480px)': {
+                          p: 0
+                        }
                       }}
                     >
                       <Box
@@ -234,6 +259,10 @@ const Settings: NextPage = () => {
                         <Box
                           sx={{
                             margin: '0 5px',
+                            '@media screen and (max-width: 480px)': {
+                              width: '36px',
+                              height: '35px'
+                            }
                           }}
                         >
                           <Image src={keyIcon} width={36} height={38} />
@@ -247,7 +276,10 @@ const Settings: NextPage = () => {
                             color={activeSettings ? 'secondary.main' : '#ffffff'}
                             sx={{
                               fontSize: '29px',
-                              fontFamily: 'Jost'
+                              fontFamily: 'Jost',
+                              '@media screen and (max-width: 480px)': {
+                                fontSize: '23px'
+                              }
                             }}
                           >
                             Settings
