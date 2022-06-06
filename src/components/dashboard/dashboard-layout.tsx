@@ -5,7 +5,6 @@ import { CSSObject, styled, Theme } from '@mui/material/styles';
 // import { DashboardNavbar } from './dashboard-navbar';
 import { DashboardSidebar } from './dashboard-sidebar';
 import { Box } from '@mui/material';
-import { DashboardNavbar } from './dashboard-navbar';
 
 interface DashboardLayoutProps {
   children?: ReactNode;
@@ -33,7 +32,13 @@ export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
 
   return (
     <>
-      <DashboardLayoutRoot>
+      <DashboardLayoutRoot
+        sx={{
+          '@media screen and (min-width: 1400px)': {
+            pl: !isOpen ? '80px' : ''
+          }
+        }}
+      >
         <Box
           sx={{
             display: 'flex',
