@@ -256,7 +256,17 @@ const Results: NextPage = () => {
                   md={12}
                   xs={12}
                 >
-                  <Card sx={{p: 5, mt: 2, background: '#222543', borderRadius: '30px'}}>
+                  <Card 
+                    sx={{
+                      p: 5, 
+                      mt: 2, 
+                      background: '#222543', 
+                      borderRadius: '30px',
+                      '@media screen and (max-width: 480px)': {
+                        p: 2
+                      }
+                    }}
+                  >
                     <Box
                       sx={{
                         display: 'flex',
@@ -284,6 +294,9 @@ const Results: NextPage = () => {
                             '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
                               width: '230px'
                             },
+                            '@media screen and (max-width: 480px)': {
+                              width: '171px'
+                            }
                           }}
                           MenuProps={{
                             PaperProps: {
@@ -1036,11 +1049,20 @@ const Results: NextPage = () => {
                                 height: '35px',
                               },
                               '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
-                                border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
-                                borderRadius: '7px',
+                                border: 'double 2px transparent',
+                                borderRadius: '80px',
                                 borderImageSlice: 1,
                                 borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
-                              }
+                                backgroundOrigin: 'border-box',
+                                backgroundClip: 'content-box, border-box',
+                              },
+                              borderRadius: '50px',
+                              border: '2px solid transparent',
+                              background: 'linear-gradient(to bottom, #3C90FF, #BE35FF) border-box',
+                              // mask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
+                              maskComposite: "exclude",
+                              '-webkit-mask': 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
+                              '-webkit-mask-composite': 'xor'
                             }}
                           >
                           <TextField
@@ -1053,7 +1075,7 @@ const Results: NextPage = () => {
                             sx={{
                               ".MuiOutlinedInput-root":{
                                 color: 'secondary.main'
-                              }
+                              },
                             }}
                           />
                         </Box>

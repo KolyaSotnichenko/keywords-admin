@@ -428,7 +428,7 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
               mt: !isSidebarOpened ? 20 : 3,
               mb: 3,
               '@media screen and (max-width: 480px)': {
-                mt: 25,
+                mt: !isSidebarOpened ? 25 : 5,
                 mb: 0
               }
             }}

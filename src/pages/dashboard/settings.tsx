@@ -1,4 +1,4 @@
-import { Grid, Typography, Select, MenuItem, Card, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Switch, Tooltip } from "@mui/material";
+import { Grid, Typography, Select, MenuItem, Card, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Switch, Tooltip, makeStyles } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Collapse from '@mui/material/Collapse';
 import { NextPage } from "next";
@@ -23,7 +23,7 @@ import { useState } from "react";
 import Head from "next/head";
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import {KeyIcon} from '../../icons/key'
 
 
 function createData(
@@ -66,6 +66,8 @@ const Settings: NextPage = () => {
   const switchHandler = (event) => {
     setChecked(event.target.checked)
   }
+
+  
 
     return (
         <>
@@ -172,7 +174,7 @@ const Settings: NextPage = () => {
                       display: 'flex',
                       justifyContent: 'space-between', 
                       mt: 5, 
-                      background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', 
+                      background: 'linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', 
                       borderRadius: '30px',
                       '@media screen and (max-width: 480px)': {
                         height: '42px'
@@ -268,6 +270,7 @@ const Settings: NextPage = () => {
                           }}
                         >
                           <Image src={keyIcon} width={36} height={38} />
+                          {/* <KeyIcon fontSize="large" color={activeSettings ? 'secondary' : 'white'}  /> */}
                         </Box>
                         <Box
                           sx={{
@@ -1114,7 +1117,13 @@ const Settings: NextPage = () => {
                             </Box>
                           </Box>
                           <Box>
-                            <Switch checked={checked} onChange={switchHandler} />
+                            <Switch 
+                              checked={checked} 
+                              onChange={switchHandler} 
+                              sx={{
+
+                              }}
+                            />
                           </Box>
                         </Box>
                           <Collapse in={checked}>
@@ -1678,7 +1687,7 @@ const Settings: NextPage = () => {
                                       {row.website}
                                     </TableCell>
                                     <TableCell align="left">{row.geo}</TableCell>
-                                    <TableCell align="left">{row.project}</TableCell>
+                                    <TableCell sx={{fontSize: '16px', fontWeight: 700}} align="left">{row.project}</TableCell>
                                     <TableCell align="left">
                                       <Tooltip 
                                         title="text text text text" 
@@ -1691,7 +1700,9 @@ const Settings: NextPage = () => {
                                           }
                                         }}
                                       >
-                                        <Typography>
+                                        <Typography
+                                          sx={{fontSize: '16px', fontWeight: 700}}
+                                        >
                                           {row.notes}
                                         </Typography>
                                       </Tooltip>
