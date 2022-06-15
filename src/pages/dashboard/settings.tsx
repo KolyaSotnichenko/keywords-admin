@@ -23,7 +23,7 @@ import { useState } from "react";
 import Head from "next/head";
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import {KeyIcon} from '../../icons/key'
+// import {KeyIcon} from '../../icons/key'
 
 
 function createData(
@@ -177,7 +177,8 @@ const Settings: NextPage = () => {
                       background: 'linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', 
                       borderRadius: '30px',
                       '@media screen and (max-width: 480px)': {
-                        height: '42px'
+                        height: '42px',
+                        mt: 2
                       }
                     }}
                   >
@@ -199,6 +200,7 @@ const Settings: NextPage = () => {
                       <Box
                         sx={{
                           display: 'flex',
+                          alignItems: 'center',
                           margin: '0 -5px'
                         }}
                       >
@@ -206,16 +208,19 @@ const Settings: NextPage = () => {
                           sx={{
                             margin: '0 5px',
                             '.MuiSvgIcon-root': {
-                              color: 'secondary'
+                              color: 'secondary',
+                              
                             },
                             '@media screen and (max-width: 480px)': {
                               width: '36px',
-                              height: '35px'
+                              height: '35px',
+                              pt: '5px',
+                              pl: '10px'
                             }
                           }}
                         >
                           <ChartPie 
-                            fontSize="large" 
+                            fontSize="medium" 
                             color={!activeSettings ? 'secondary' : 'white'}
                           />
                         </Box>
@@ -257,19 +262,24 @@ const Settings: NextPage = () => {
                       <Box
                         sx={{
                           display: 'flex',
+                          alignItems: 'center',
                           margin: '0 -5px'
                         }}
                       >
                         <Box
                           sx={{
                             margin: '0 5px',
+                            width: '36px',
+                            height: '38px',
                             '@media screen and (max-width: 480px)': {
                               width: '36px',
-                              height: '35px'
+                              height: '35px',
+                              pt: '5px',
+                              // pl: '10px'
                             }
                           }}
                         >
-                          <Image src={keyIcon} width={36} height={38} />
+                          <Image src={keyIcon} />
                           {/* <KeyIcon fontSize="large" color={activeSettings ? 'secondary' : 'white'}  /> */}
                         </Box>
                         <Box
@@ -1075,7 +1085,19 @@ const Settings: NextPage = () => {
                   )}
                   {!activeSettings && (
                     <>
-                      <Card sx={{p: 3, mt: 5, background: '#222543', borderRadius: '30px'}}>
+                      <Card 
+                        sx={{
+                          p: 3, 
+                          mt: 5, 
+                          background: '#222543', 
+                          borderRadius: '30px',
+                          '@media screen and (max-width: 480px)': {
+                            background: 'transparent',
+                            p: 0,
+                            height: '38%'
+                          }
+                        }}
+                      >
                         <Box
                           sx={{
                             display: 'flex',
@@ -1095,7 +1117,11 @@ const Settings: NextPage = () => {
                           >
                             <Box
                               sx={{
-                                margin: '0 5px'
+                                margin: '0 5px',
+                                '@media screen and (max-width: 480px)': {
+                                  width: '16px',
+                                  height: '16px'
+                                }
                               }}
                             >
                               <Image src={pencilIcon} width={23} height={23} />
@@ -1109,7 +1135,10 @@ const Settings: NextPage = () => {
                                   variant="subtitle2"
                                   sx={{
                                       fontSize: '32px',
-                                      fontFamily: 'Jost'
+                                      fontFamily: 'Jost',
+                                      '@media screen and (max-width: 480px)': {
+                                        fontSize: '20px'
+                                      }
                                   }}
                               >
                                   Filing a complaint
@@ -1145,6 +1174,10 @@ const Settings: NextPage = () => {
                                     borderRadius: '7px',
                                     borderImageSlice: 1,
                                     borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  },
+                                  '@media screen and (max-width: 480px)': {
+                                    height: '31px',
+                                    width: '132px'
                                   }
                                 }}
                                 MenuProps={{
@@ -1171,7 +1204,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         WEBSITE 1
@@ -1199,7 +1235,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         WEBSITE 2
@@ -1224,7 +1263,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         WEBSITE 3
@@ -1244,6 +1286,10 @@ const Settings: NextPage = () => {
                                     borderRadius: '7px',
                                     borderImageSlice: 1,
                                     borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  },
+                                  '@media screen and (max-width: 480px)': {
+                                    height: '31px',
+                                    width: '104px'
                                   }
                                 }}
                                 MenuProps={{
@@ -1270,7 +1316,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         GEO 1
@@ -1298,7 +1347,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         GEO 2
@@ -1323,7 +1375,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         GEO 3
@@ -1343,6 +1398,10 @@ const Settings: NextPage = () => {
                                     borderRadius: '7px',
                                     borderImageSlice: 1,
                                     borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                                  },
+                                  '@media screen and (max-width: 480px)': {
+                                    height: '31px',
+                                    width: '132px'
                                   }
                                 }}
                                 MenuProps={{
@@ -1369,7 +1428,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         PROJECT 1
@@ -1397,7 +1459,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         PROJECT 2
@@ -1422,7 +1487,10 @@ const Settings: NextPage = () => {
                                         sx={{
                                           fontSize: '20px',
                                           fontWeight: 700,
-                                          fontFamily: 'Jost'
+                                          fontFamily: 'Jost',
+                                          '@media screen and (max-width: 480px)': {
+                                            fontSize: '16px'
+                                          }
                                         }}
                                       >
                                         PROJECT 3
@@ -1463,7 +1531,10 @@ const Settings: NextPage = () => {
                                   borderRadius: '9px',
                                   alignItems: 'center',
                                   justifyContent: 'center',
-                                  margin: '0 -5px'
+                                  margin: '0 -5px',
+                                  '@media screen and (max-width: 480px)': {
+                                    margin: '0 3px'
+                                  }
                                 }}
                               >
                                 <Box
@@ -1483,7 +1554,10 @@ const Settings: NextPage = () => {
                                     sx={{
                                       fontSize: '20px',
                                       fontWeight: 700,
-                                      fontFamily: 'Jost'
+                                      fontFamily: 'Jost',
+                                      '@media screen and (max-width: 480px)': {
+                                        fontSize: '18px',
+                                      }
                                     }}
                                   >
                                     ADD
@@ -1494,21 +1568,39 @@ const Settings: NextPage = () => {
                             </Box>
                           </Collapse>
                       </Card>
-                      <Card sx={{p: 3, mt: 5, background: '#222543', borderRadius: '30px'}}>
+                      <Card 
+                        sx={{
+                          p: 3, 
+                          mt: 5, 
+                          background: '#222543', 
+                          borderRadius: '30px',
+                          '@media screen and (max-width: 480px)': {
+                            background: 'transparent',
+                            p: 0,
+                          }
+                        }}
+                      >
                         <Box
                           sx={{
                             display: 'flex',
                             flexDirection: 'row',
                             alignItems: 'center',
+                            pt: '10px',
                             margin: '0 -5px'
                           }}
                         >
                           <Box
                               sx={{
-                                margin: '0 5px'
+                                margin: '0 5px',
+                                width: '30px',
+                                height: '30px',
+                                '@media screen and (max-width: 480px)': {
+                                  width: '18px',
+                                  height: '21px'
+                                }
                               }}
                             >
-                              <Image src={documentIcon} width={30} height={30} />
+                              <Image src={documentIcon}/>
                             </Box>
                             <Box
                               sx={{
@@ -1519,7 +1611,10 @@ const Settings: NextPage = () => {
                                   variant="subtitle2"
                                   sx={{
                                       fontSize: '32px',
-                                      fontFamily: 'Jost'
+                                      fontFamily: 'Jost',
+                                      '@media screen and (max-width: 480px)': {
+                                        fontSize: '20px'
+                                      }
                                   }}
                               >
                                   White list
@@ -1813,6 +1908,15 @@ const Settings: NextPage = () => {
                       </Card>
                     </>
                   )}
+                </Grid>
+                <Grid
+                  item
+                  md={12}
+                  xs={12}
+                >
+                  <Box>
+                    
+                  </Box>
                 </Grid>
               </Grid>
             </Container>
