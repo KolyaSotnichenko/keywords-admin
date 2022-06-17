@@ -305,12 +305,29 @@ const Settings: NextPage = () => {
                   </Card>
                   {activeSettings && (
                     <>
-                    <Card sx={{ justifyContent: 'space-between', p: 5, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px' }}>
+                    <Card 
+                      sx={{ 
+                        justifyContent: 'space-between', 
+                        p: 5, 
+                        mt: 5, 
+                        background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', 
+                        borderRadius: '30px',
+                        '@media screen and (max-width: 480px)': {
+                          p: 0,
+                          background: 'transparent',
+                          borderRadius: 0,
+                          height: '20%'
+                        } 
+                      }}
+                    >
                     <Typography
                       variant="subtitle2"
                       sx={{
                         fontSize: '32px',
-                        fontFamily: 'Jost'
+                        fontFamily: 'Jost',
+                        '@media screen and (max-width: 480px)': {
+                          fontSize: '21px'
+                        }
                       }}
                     >
                       Add keys
@@ -321,6 +338,557 @@ const Settings: NextPage = () => {
                         justifyContent: 'space-between'
                       }}
                     >
+                      <Box
+                        sx={{
+                          display: 'none',
+                          '@media screen and (max-width: 480px)': {
+                            display: 'flex',
+                            flexDirection: 'column',
+                          }
+                        }}
+                      >
+                        <Select
+                          IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
+                          sx={{
+                            height: '41px',
+                            '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                              borderRadius: '7px',
+                              borderImageSlice: 1,
+                              borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                              '.MuiMenuItem-gutters:hover':{
+                                color: 'secondary.main'
+                              }
+                            },
+                            '@media screen and (max-width: 480px)': {
+                              height: '27px',
+                            }
+                          }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                background: 'linear-gradient(180deg, rgba(177, 79, 255, 1.0) 0%, rgba(160, 144, 255, 1.0) 100%)',
+                                filter: 'drop-shadow(7.91971px 7.91971px 15.8394px rgba(0, 0, 0, 0.25))',
+                              }
+                            }
+                          }}
+                        >
+                          <MenuItem value={1}>
+                            <Tooltip 
+                              title={
+                                <>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        width: '205px',
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          fontSize: '14px',
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                      BetAmo Обзор казино и бонусы  (это заголовок)
+                                      BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйте захватывающие слоты и другие игры! Бонусы и акции казино. К сожалению, ..BetAmo Обзор казино и бонусы  (это заголовок)
+                                      BetAmo было основано в . Имеет лицензии от: 
+
+                                      ttttttttttttttxshsh
+                                      hrhrhr
+                                      hrjry
+                                      sdjtyh
+                                      dhd5
+                                      BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйтонусы и акции казино. К сожалению, ..
+                                      </Typography>
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Image src={tooltipImage} width={97} height={512} />
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Image src={tooltipImage} width={97} height={512} />
+                                    </Box>
+                                  </Box>
+                                </>
+                              }
+                              placement="right-end"
+                            >
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  margin: '0 -5px'
+                                }}
+                              >
+                                <Box 
+                                  sx={{ 
+                                    margin: '0 5px',
+                                    width: '23px',
+                                    height: '23px',
+                                    '@media screen and (max-width: 480px)': {
+                                      width: '15px',
+                                      height: '15px'
+                                    } 
+                                  }}
+                                >
+                                  <Image src={folderIcon} width={23} height={23} />
+                                </Box>
+                                <Box sx={{ margin: '0 5px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '20px',
+                                      fontWeight: 700,
+                                      fontFamily: 'Jost',
+                                      '@media screen and (max-width: 480px)': {
+                                        fontSize: '13px'
+                                      }
+                                    }}
+                                  >
+                                    Project 1
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </Tooltip>
+                          </MenuItem>
+                          <MenuItem value={2}>
+                          <Tooltip 
+                              title={
+                                <>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        width: '205px',
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          fontSize: '14px',
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                      BetAmo Обзор казино и бонусы  (это заголовок)
+                                      BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйте захватывающие слоты и другие игры! Бонусы и акции казино. К сожалению, ..BetAmo Обзор казино и бонусы  (это заголовок)
+                                      BetAmo было основано в . Имеет лицензии от: 
+
+                                      ttttttttttttttxshsh
+                                      hrhrhr
+                                      hrjry
+                                      sdjtyh
+                                      dhd5
+                                      BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйтонусы и акции казино. К сожалению, ..
+                                      </Typography>
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Image src={tooltipImage} width={97} height={512} />
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Image src={tooltipImage} width={97} height={512} />
+                                    </Box>
+                                  </Box>
+                                </>
+                              }
+                              placement="right-end"
+                            >
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  margin: '0 -5px'
+                                }}
+                              >
+                                <Box
+                                  sx={{
+                                    margin: '0 5px',
+                                    width: '23px',
+                                    height: '23px',
+                                    '@media screen and (max-width: 480px)': {
+                                      width: '15px',
+                                      height: '15px'
+                                    } 
+                                  }}
+                                >
+                                  <Image src={folderIcon} width={23} height={23} />
+                                </Box>
+                                <Box sx={{ margin: '0 5px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '20px',
+                                      fontWeight: 700,
+                                      fontFamily: 'Jost',
+                                      '@media screen and (max-width: 480px)': {
+                                        fontSize: '13px'
+                                      }
+                                    }}
+                                  >
+                                    Project 2
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </Tooltip>
+                          </MenuItem>
+                          <MenuItem value={3}>
+                          <Tooltip 
+                              title={
+                                <>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      flexDirection: 'row',
+                                      margin: '0 -5px'
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        width: '205px',
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          fontSize: '14px',
+                                          fontFamily: 'Jost'
+                                        }}
+                                      >
+                                      BetAmo Обзор казино и бонусы  (это заголовок)
+                                      BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйте захватывающие слоты и другие игры! Бонусы и акции казино. К сожалению, ..BetAmo Обзор казино и бонусы  (это заголовок)
+                                      BetAmo было основано в . Имеет лицензии от: 
+
+                                      ttttttttttttttxshsh
+                                      hrhrhr
+                                      hrjry
+                                      sdjtyh
+                                      dhd5
+                                      BetAmo было основано в . Имеет лицензии от: Malta Gaming Authority (MGA). Попробуйтонусы и акции казино. К сожалению, ..
+                                      </Typography>
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Image src={tooltipImage} width={97} height={512} />
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        margin: '0 5px'
+                                      }}
+                                    >
+                                      <Image src={tooltipImage} width={97} height={512} />
+                                    </Box>
+                                  </Box>
+                                </>
+                              }
+                              placement="right-end"
+                            >
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  margin: '0 -5px'
+                                }}
+                              >
+                                <Box 
+                                  sx={{ 
+                                    margin: '0 5px',
+                                    width: '23px',
+                                    height: '23px',
+                                    '@media screen and (max-width: 480px)': {
+                                      width: '15px',
+                                      height: '15px'
+                                    }  
+                                  }}
+                                >
+                                  <Image src={folderIcon} width={23} height={23} />
+                                </Box>
+                                <Box sx={{ margin: '0 5px' }}>
+                                  <Typography
+                                    sx={{
+                                      fontSize: '20px',
+                                      fontWeight: 700,
+                                      fontFamily: 'Jost',
+                                      '@media screen and (max-width: 480px)': {
+                                        fontSize: '13px'
+                                      }
+                                    }}
+                                  >
+                                    Project 3
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </Tooltip>
+                          </MenuItem>
+                        </Select>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            height: '45px',
+                            widht: '394px',
+                            alignItems: 'center',
+                            border: '1px solid',
+                            borderRadius: '7px',
+                            borderImageSlice: 1,
+                            borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            margin: '0 -5px',
+                            '@media screen and (max-width: 480px)': {
+                              mt: 2,
+                              ml: 0,
+                              width: '227px'
+                            }
+                          }}
+                        >
+                          <Box sx={{ margin: '0 5px' }}>
+                            <Image src={keyIcon} width={24} height={24} />
+                          </Box>
+                          <Box
+                            sx={{
+                              margin: '0 5px',
+                              '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
+                                width: '296px',
+                              },
+                              '@media screen and (max-width: 480px)': {
+                                '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
+                                  width: '150px',
+                                  heigth: '33px'
+                                },
+                              },
+                              '& .css-j4fmve-MuiInputBase-root-MuiInput-root:before': {
+                                border: 'none'
+                              },
+                              '& .css-j4fmve-MuiInputBase-root-MuiInput-root:after': {
+                                border: 'none'
+                              },
+                            }}
+                          >
+                            <TextField id="standard-basic" variant="standard" />
+                          </Box>
+                          <Box
+                            sx={{
+                              // display: 'flex',
+                              width: '26px',
+                              height: '26px',
+                              textAlign: 'center',
+                              pt: '4px',
+                              borderRadius: '50%',
+                              background: 'linear-gradient(180deg, #B14FFF 0%, #2D80FF 100%);',
+                              margin: '0 5px',
+                            }}
+                          >
+                            <Image src={exelIcon} width={17} height={17} />
+                          </Box>
+                        </Box>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: 'none',
+                          margin: '0 -10px',
+                          '@media screen and (max-width: 480px)': {
+                            display: 'flex',
+                            flexDirection: 'column',
+                          }
+                        }}
+                      >
+                        <Select
+                          IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
+                          sx={{
+                            height: '41px',
+                            width: '198px',
+                            margin: '0 10px',
+                            '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
+                              border: '1 px solid linear-gradient(90deg, rgba(60,144,255,1) 100%, rgba(190,53,255,1) 100%)',
+                              borderRadius: '7px',
+                              borderImageSlice: 1,
+                              borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            },
+                            '@media screen and (max-width: 480px)': {
+                              height: '27px',
+                              width: '130px'
+                            }
+                          }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                background: 'linear-gradient(180deg, #B14FFF 0%, #3C90FF 100%)',
+                              }
+                            }
+                          }}
+                        >
+                          <MenuItem value={1}>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={geoIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost',
+                                    '@media screen and (max-width: 480px)': {
+                                      fontSize: '13px'
+                                    }
+                                  }}
+                                >
+                                  GEO 1
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={2}>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  margin: '0 5px',
+                                }}
+                              >
+                                <Image src={geoIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost',
+                                    '@media screen and (max-width: 480px)': {
+                                      fontSize: '13px'
+                                    }
+                                  }}
+                                >
+                                  GEO 2
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                          <MenuItem value={3}>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                margin: '0 -5px'
+                              }}
+                            >
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Image src={geoIcon} width={23} height={23} />
+                              </Box>
+                              <Box sx={{ margin: '0 5px' }}>
+                                <Typography
+                                  sx={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    fontFamily: 'Jost',
+                                    '@media screen and (max-width: 480px)': {
+                                      fontSize: '13px'
+                                    }
+                                  }}
+                                >
+                                  GEO 3
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </MenuItem>
+                        </Select>
+                        <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          width: '171px',
+                          height: '45px',
+                          background: 'linear-gradient(90deg, #3CFFF9 0.36%, #00FF66 100.36%);',
+                          borderRadius: '9px',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 -5px',
+                          '@media screen and (max-width: 480px)': {
+                            width: '113px',
+                            height: '30px',
+                            mt: 2,
+                            ml: 2
+                          }
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            margin: '0 5px',
+                            pt: 1,
+                            width: '23px',
+                            height: '23px',
+                            '@media screen and (max-width: 480px)': {
+                              height: '16px',
+                              width: '16px',
+                              pt: 0,
+                            }
+                          }}
+                        >
+                          <Image src={addIcon} width={23} height={23} />
+                        </Box>
+                        <Box
+                          sx={{
+                            margin: '0 5px'
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: '20px',
+                              fontWeight: 700,
+                              fontFamily: 'Jost',
+                              '@media screen and (max-width: 480px)': {
+                                fontSize: '13px'
+                              }
+                            }}
+                          >
+                            ADD
+                          </Typography>
+                        </Box>
+                      </Box>
+                      </Box>
+                      <Box 
+                        sx={{
+                          '@media screen and (max-width: 480px)': {
+                            display: 'none'
+                          }
+                        }}
+                      >
                       <Select
                         IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                         sx={{
@@ -769,9 +1337,23 @@ const Settings: NextPage = () => {
                           </Typography>
                         </Box>
                       </Box>
+                      </Box>
                     </Box>
                   </Card>
-                  <Card sx={{ p: 5, pb: 3, mt: 5, background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', borderRadius: '30px' }}>
+                  <Card 
+                    sx={{ 
+                      p: 5, 
+                      pb: 3, 
+                      mt: 5, 
+                      background: '#linear-gradient(90deg, rgba(66, 141, 255, 0.3) 0%, rgba(177, 79, 255, 0.3) 99.98%);', 
+                      borderRadius: '30px',
+                      '@media screen and (max-width: 480px)': {
+                        borderRadius: 0,
+                        background: 'transparent',
+                        p: 0
+                      } 
+                    }}
+                  >
                       <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650, border: '1px solid white' }} aria-label="simple table">
                           <TableHead sx={{ border: '1px solid white' }}>
