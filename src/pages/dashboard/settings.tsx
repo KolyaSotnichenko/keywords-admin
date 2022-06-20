@@ -220,7 +220,7 @@ const Settings: NextPage = () => {
                           }}
                         >
                           <ChartPie 
-                            fontSize="medium" 
+                            fontSize="large" 
                             color={!activeSettings ? 'secondary' : 'white'}
                           />
                         </Box>
@@ -269,8 +269,6 @@ const Settings: NextPage = () => {
                         <Box
                           sx={{
                             margin: '0 5px',
-                            width: '36px',
-                            height: '38px',
                             '@media screen and (max-width: 480px)': {
                               width: '36px',
                               height: '35px',
@@ -279,7 +277,7 @@ const Settings: NextPage = () => {
                             }
                           }}
                         >
-                          <Image src={keyIcon} />
+                          <Image src={keyIcon} width={43} height={42} />
                           {/* <KeyIcon fontSize="large" color={activeSettings ? 'secondary' : 'white'}  /> */}
                         </Box>
                         <Box
@@ -884,6 +882,9 @@ const Settings: NextPage = () => {
                       </Box>
                       <Box 
                         sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          width: '100%',
                           '@media screen and (max-width: 480px)': {
                             display: 'none'
                           }
@@ -893,6 +894,7 @@ const Settings: NextPage = () => {
                         IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
                         sx={{
                           height: '41px',
+                          width: '30%',
                           '& .css-1fal6dt-MuiOutlinedInput-notchedOutline': {
                             borderRadius: '7px',
                             borderImageSlice: 1,
@@ -1154,9 +1156,9 @@ const Settings: NextPage = () => {
                         sx={{
                           display: 'flex',
                           flexDirection: 'row',
-                          justifyContent: 'center',
+                          // justifyContent: 'space-between',
                           height: '45px',
-                          widht: '394px',
+                          width: '30%',
                           alignItems: 'center',
                           border: '1px solid',
                           borderRadius: '7px',
@@ -1165,24 +1167,33 @@ const Settings: NextPage = () => {
                           margin: '0 -5px'
                         }}
                       >
-                        <Box sx={{ margin: '0 5px' }}>
-                          <Image src={keyIcon} width={24} height={24} />
-                        </Box>
                         <Box
                           sx={{
-                            margin: '0 5px',
-                            '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
-                              width: '296px'
-                            },
-                            '& .css-j4fmve-MuiInputBase-root-MuiInput-root:before': {
-                              border: 'none'
-                            },
-                            '& .css-j4fmve-MuiInputBase-root-MuiInput-root:after': {
-                              border: 'none'
-                            },
+                            display: 'flex',
+                            alignItems: 'center',
+                            width: '90%'
                           }}
                         >
-                          <TextField id="standard-basic" variant="standard" />
+                          <Box sx={{ margin: '0 5px' }}>
+                            <Image src={keyIcon} width={24} height={24} />
+                          </Box>
+                          <Box
+                            sx={{
+                              margin: '0 5px',
+                              width: '100%',
+                              '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
+                                width: '296px'
+                              },
+                              '& .css-j4fmve-MuiInputBase-root-MuiInput-root:before': {
+                                border: 'none'
+                              },
+                              '& .css-j4fmve-MuiInputBase-root-MuiInput-root:after': {
+                                border: 'none'
+                              },
+                            }}
+                          >
+                            <TextField sx={{width: '100%'}} id="standard-basic" variant="standard" />
+                          </Box>
                         </Box>
                         <Box
                           sx={{

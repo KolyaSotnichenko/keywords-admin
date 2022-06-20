@@ -263,7 +263,8 @@ const Results: NextPage = () => {
                       background: '#222543', 
                       borderRadius: '30px',
                       '@media screen and (max-width: 480px)': {
-                        p: 2
+                        p: 2,
+                        background: 'transparent'
                       }
                     }}
                   >
@@ -295,7 +296,8 @@ const Results: NextPage = () => {
                               width: '230px'
                             },
                             '@media screen and (max-width: 480px)': {
-                              width: '171px'
+                              width: '171px',
+                              height: '24'
                             }
                           }}
                           MenuProps={{
@@ -314,7 +316,17 @@ const Results: NextPage = () => {
                                 margin: '0 -5px'
                               }}
                             >
-                              <Box sx={{ margin: '0 5px' }}>
+                              <Box 
+                                sx={{ 
+                                  margin: '0 5px',
+                                  width: '23px',
+                                  height: '23px',
+                                  '@media screen and (max-width: 480px)': {
+                                    width: '14px',
+                                    height: '14px'
+                                  }
+                                }}
+                              >
                                 <Image src={calendarIcon} width={23} height={23} />
                               </Box>
                               <Box sx={{ margin: '0 5px' }}>
@@ -322,7 +334,10 @@ const Results: NextPage = () => {
                                   sx={{
                                     fontSize: '19px',
                                     fontWeight: 400,
-                                    fontFamily: 'Jost'
+                                    fontFamily: 'Jost',
+                                    '@media screen and (max-width: 480px)': {
+                                      fontSize: '12px'
+                                    }
                                   }}
                                 >
                                   2022-01-01-2022-12-02
@@ -341,6 +356,12 @@ const Results: NextPage = () => {
                               <Box
                                 sx={{
                                   margin: '0 5px',
+                                  width: '23px',
+                                  height: '23px',
+                                  '@media screen and (max-width: 480px)': {
+                                    width: '14px',
+                                    height: '14px'
+                                  }
                                 }}
                               >
                                 <Image src={calendarIcon} width={23} height={23} />
@@ -350,7 +371,10 @@ const Results: NextPage = () => {
                                   sx={{
                                     fontSize: '19px',
                                     fontWeight: 400,
-                                    fontFamily: 'Jost'
+                                    fontFamily: 'Jost',
+                                    '@media screen and (max-width: 480px)': {
+                                      fontSize: '12px'
+                                    }
                                   }}
                                 >
                                   2022-01-01-2022-12-02
@@ -366,7 +390,17 @@ const Results: NextPage = () => {
                                 margin: '0 -5px'
                               }}
                             >
-                              <Box sx={{ margin: '0 5px' }}>
+                              <Box 
+                                sx={{ 
+                                  margin: '0 5px',
+                                  width: '23px',
+                                  height: '23px',
+                                  '@media screen and (max-width: 480px)': {
+                                    width: '14px',
+                                    height: '14px'
+                                  } 
+                                }}
+                              >
                                 <Image src={calendarIcon} width={23} height={23} />
                               </Box>
                               <Box sx={{ margin: '0 5px' }}>
@@ -374,7 +408,10 @@ const Results: NextPage = () => {
                                   sx={{
                                     fontSize: '19px',
                                     fontWeight: 400,
-                                    fontFamily: 'Jost'
+                                    fontFamily: 'Jost',
+                                    '@media screen and (max-width: 480px)': {
+                                      fontSize: '12px'
+                                    }
                                   }}
                                 >
                                   2022-01-01-2022-12-02
@@ -409,7 +446,13 @@ const Results: NextPage = () => {
                         </FormGroup>
                         <Box
                           sx={{
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            width: '22px',
+                            height: '23px',
+                            '@media screen and (max-width: 480px)': {
+                              width: '13px',
+                              heigth: '14px'
+                            }
                           }}
                         >
                           <Image src={qIcon} width={22} height={23}/>
