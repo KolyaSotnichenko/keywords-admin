@@ -18,6 +18,7 @@ import pencilIcon from '../../../public/pencil.png'
 import worldIcon from '../../../public/world.png'
 import documentIcon from '../../../public/document.png'
 import tooltipImage from '../../../public/tooltipImage.png'
+import comp from '../../../public/static/comp.png'
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useState } from "react";
 import Head from "next/head";
@@ -206,6 +207,8 @@ const Settings: NextPage = () => {
                       >
                         <Box
                           sx={{
+                            width: '43px',
+                            height: '42px',
                             margin: '0 5px',
                             '.MuiSvgIcon-root': {
                               color: 'secondary',
@@ -219,10 +222,11 @@ const Settings: NextPage = () => {
                             }
                           }}
                         >
-                          <ChartPie 
+                          {/* <ChartPie 
                             fontSize="large" 
                             color={!activeSettings ? 'secondary' : 'white'}
-                          />
+                          /> */}
+                          <Image src={comp} />
                         </Box>
                         <Box
                           sx={{
@@ -235,7 +239,7 @@ const Settings: NextPage = () => {
                                 fontSize: '29px',
                                 fontFamily: 'Jost',
                                 '@media screen and (max-width: 480px)': {
-                                  fontSize: '23px'
+                                  fontSize: '23px',
                                 }
                               }}
                             >
@@ -268,6 +272,8 @@ const Settings: NextPage = () => {
                       >
                         <Box
                           sx={{
+                            width: '43px',
+                            height: '42px',
                             margin: '0 5px',
                             '@media screen and (max-width: 480px)': {
                               width: '36px',
@@ -277,7 +283,7 @@ const Settings: NextPage = () => {
                             }
                           }}
                         >
-                          <Image src={keyIcon} width={43} height={42} />
+                          <Image src={keyIcon} />
                           {/* <KeyIcon fontSize="large" color={activeSettings ? 'secondary' : 'white'}  /> */}
                         </Box>
                         <Box

@@ -27,7 +27,7 @@ const DashboardLayoutRoot = styled('div')(
 
 export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
   const { children } = props;
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const handleChange = (newState: boolean) => {
     setIsOpen(newState)
