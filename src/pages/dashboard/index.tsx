@@ -82,7 +82,7 @@ const Overview: NextPage = () => {
           margin: '0 -5px',
           '@media screen and (max-width: 480px)':{
             display: 'flex',
-            pl: 8,
+            pl: 2,
             pt: '14px',
             height: '70px',
             background: 'linear-gradient(180deg, rgba(104, 79, 255, 0.31) 0%, rgba(66, 141, 255, 0.31) 100%)'
