@@ -207,12 +207,13 @@ const Settings: NextPage = () => {
                       >
                         <Box
                           sx={{
-                            width: '43px',
-                            height: '42px',
+                            width: '45px',
+                            height: '44px',
                             margin: '0 5px',
+                            display: 'flex',
+                            alignItems: 'center',
                             '.MuiSvgIcon-root': {
-                              color: 'secondary',
-                              
+                              color: 'secondary', 
                             },
                             '@media screen and (max-width: 480px)': {
                               width: '36px',
@@ -272,9 +273,11 @@ const Settings: NextPage = () => {
                       >
                         <Box
                           sx={{
-                            width: '43px',
-                            height: '42px',
+                            width: '45px',
+                            height: '44px',
                             margin: '0 5px',
+                            display: 'flex',
+                            alignItems: 'center',
                             '@media screen and (max-width: 480px)': {
                               width: '36px',
                               height: '35px',
