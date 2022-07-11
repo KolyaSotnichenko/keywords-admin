@@ -660,7 +660,7 @@ const Settings: NextPage = () => {
                             '@media screen and (max-width: 480px)': {
                               mt: 2,
                               ml: 0,
-                              width: '227px'
+                              width: '180px'
                             }
                           }}
                         >
@@ -675,7 +675,7 @@ const Settings: NextPage = () => {
                               },
                               '@media screen and (max-width: 480px)': {
                                 '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
-                                  width: '150px',
+                                  width: '100px',
                                   heigth: '33px'
                                 },
                               },
@@ -729,7 +729,7 @@ const Settings: NextPage = () => {
                             },
                             '@media screen and (max-width: 480px)': {
                               height: '27px',
-                              width: '130px'
+                              width: '110px'
                             }
                           }}
                           MenuProps={{
@@ -838,9 +838,9 @@ const Settings: NextPage = () => {
                           justifyContent: 'center',
                           margin: '0 -5px',
                           '@media screen and (max-width: 480px)': {
-                            width: '113px',
+                            width: '90px',
                             height: '30px',
-                            mt: 2,
+                            mt: '25px',
                             ml: 2
                           }
                         }}

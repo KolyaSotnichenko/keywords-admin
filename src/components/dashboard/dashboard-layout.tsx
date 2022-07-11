@@ -27,7 +27,7 @@ const DashboardLayoutRoot = styled('div')(
 
 export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
   const { children } = props;
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleChange = (newState: boolean) => {
     setIsOpen(newState)
@@ -35,24 +35,54 @@ export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
 
   return (
     <>
-      <DashboardLayoutRoot
-        sx={{
-          '@media screen and (min-width: 1400px)': {
-            pl: !isOpen ? '80px' : ''
-          }
-        }}
-      >
-        <Box
+      {!isOpen ? (
+        <DashboardLayoutRoot
           sx={{
-            display: 'flex',
-            flex: '1 1 auto',
-            flexDirection: 'column',
-            width: '100%'
+            '@media screen and (min-width: 1400px)': {
+              pl: !isOpen ? '80px' : ''
+            }
           }}
         >
-          {children}
+          <Box
+            sx={{
+              display: 'flex',
+              flex: '1 1 auto',
+              flexDirection: 'column',
+              width: '100%'
+            }}
+          >
+            {children}
+          </Box>
+        </DashboardLayoutRoot>
+      ) : (
+        <Box
+          sx={{
+            '@media screen and (max-width: 480px)': {
+              display: 'none'
+            }
+          }}
+        >
+          <DashboardLayoutRoot
+            sx={{
+              '@media screen and (min-width: 1400px)': {
+                pl: isOpen ? '280px' : ''
+              }
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                flex: '1 1 auto',
+                flexDirection: 'column',
+                width: '100%'
+              }}
+            >
+              {children}
+            </Box>
+          </DashboardLayoutRoot>
         </Box>
-      </DashboardLayoutRoot>
+      )}
+      
       {/* <DashboardNavbar onOpenSidebar={(): void => setIsSidebarOpen(true)} /> */}
       <DashboardSidebar
         onClose={(): void => setIsOpen(false)}
