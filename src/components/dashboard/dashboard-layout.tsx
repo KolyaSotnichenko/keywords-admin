@@ -20,7 +20,7 @@ const DashboardLayoutRoot = styled('div')(
       paddingLeft: 280
     },
     [theme.breakpoints.up('xs')]: {
-      paddingLeft: 60
+      paddingLeft: 50
     },
   })
 );

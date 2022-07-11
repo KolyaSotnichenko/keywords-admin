@@ -273,13 +273,15 @@ const Results: NextPage = () => {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        margin: '0 -5px'
+                        margin: '0 -5px',
+                        gap: '10px',
+                        flexWrap: 'wrap'
                       }}
                     >
                       <Box
-                        sx={{
-                          margin: '0 5px'
-                        }}
+                        // sx={{
+                        //   margin: '0 5px'
+                        // }}
                       >
                         <Select
                           IconComponent = { () =>  <ExpandMoreIcon sx={{color: 'white'}} /> }
@@ -296,7 +298,7 @@ const Results: NextPage = () => {
                               width: '230px'
                             },
                             '@media screen and (max-width: 480px)': {
-                              width: '171px',
+                              width: '144px',
                               height: '24'
                             }
                           }}
@@ -469,6 +471,9 @@ const Results: NextPage = () => {
                               borderRadius: '7px',
                               borderImageSlice: 1,
                               borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
+                            },
+                            '@media screen and (max-width: 480px)': {
+                              width: '135px'
                             }
                           }}
                           MenuProps={{
@@ -538,6 +543,9 @@ const Results: NextPage = () => {
                               borderImageSlice: 1,
                               borderImageSource: 'linear-gradient(to bottom, #3C90FF, #BE35FF)',
                             },
+                            '@media screen and (max-width: 480px)': {
+                              width: '135px'
+                            }
                           }}
                           MenuProps={{
                             PaperProps: {
@@ -608,6 +616,9 @@ const Results: NextPage = () => {
                             },
                             '@media screen and (min-width: 1440px) and (max-width: 1600px)': {
                               width: '230px'
+                            },
+                            '@media screen and (max-width: 480px)': {
+                              width: '287px'
                             }
                           }}
                           MenuProps={{
