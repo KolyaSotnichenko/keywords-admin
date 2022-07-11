@@ -40,7 +40,18 @@ const KeywordsByCountry = () => {
 
     return (
         <>
-            <Card sx={{p: 5, background: '#222543', borderRadius: '30px', height: '943px'}}>
+            <Card 
+              sx={{
+                p: 5, 
+                background: '#222543', 
+                borderRadius: '30px', 
+                height: '943px',
+                '@media screen and (max-width: 480px)': {
+                  pl: 2,
+                  pr: 2,
+                  height: '40%'
+                }
+              }}>
                 <Box
                     sx={{
                         display: 'flex',
@@ -118,52 +129,88 @@ const KeywordsByCountry = () => {
                         position: 'relative',
                         width: '100%',
                         height: '70%',
-                        mt: 4
+                        mt: 4,
+                        '@media screen and (max-width: 480px)': {
+                          height: '35%'
+                        }
                     }}
                 >
                     <Box
                         sx={{
                             position: 'absolute',
                             top: 0,
-                            left: 0
+                            left: 0,
+                            width: '425px',
+                            height: '345px',
+                            '@media screen and (max-width: 480px)': {
+                              width: '130px',
+                            }
                         }}
                     >
-                        <Image src={america1} width={425} height={345} />
+                        <Image src={america1} />
                     </Box>
                     <Box
                         sx={{
                             position: 'absolute',
                             left: '236px',
-                            top: '330px'
+                            top: '330px',
+                            width: '199px',
+                            height: '215px',
+                            '@media screen and (max-width: 480px)': {
+                              width: '40px',
+                              top: '68%',
+                              left: '25%'
+                            }
                         }}
                     >
-                        <Image src={america2} width={199} height={215} />
+                        <Image src={america2} />
                     </Box>
                     <Box
                         sx={{
                             position: 'absolute',
-                            left: '420px'
+                            left: '420px',
+                            width: '225px',
+                            height: '247px',
+                            '@media screen and (max-width: 480px)': {
+                              width: '70px',
+                              top: 0,
+                              left: '47%'
+                            }
                         }}
                     >
-                        <Image src={europa} width={225} height={247} />
+                        <Image src={europa} />
                     </Box>
                     <Box
                         sx={{
                             position: 'absolute',
                             left: '522px',
-                            top: '8px'
+                            top: '8px',
+                            width: '450px',
+                            height: '373px',
+                            '@media screen and (max-width: 480px)': {
+                              width: '94px',
+                              top: '17%',
+                              left: '61%'
+                            }
                         }}
                     >
-                        <Image src={asia} width={450} height={373} />
+                        <Image src={asia}/>
                     </Box>
                     <Box
                         sx={{
                             position: 'absolute',
                             left: '406px',
-                            top: '236px'
+                            top: '236px',
+                            width: '199px',
+                            height: '224px',
+                            '@media screen and (max-width: 480px)': {
+                              width: '66px',
+                              top: '49%',
+                              left: '46%'
+                            }
                         }}
                     >
-                        <Image src={africa} width={199} height={224} />
+                        <Image src={africa} />
                     </Box>
                 </Box>
                 <Box

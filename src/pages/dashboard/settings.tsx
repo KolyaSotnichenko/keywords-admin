@@ -216,9 +216,9 @@ const Settings: NextPage = () => {
                               color: 'secondary', 
                             },
                             '@media screen and (max-width: 480px)': {
-                              width: '36px',
-                              height: '35px',
-                              pt: '5px',
+                              width: '26px',
+                              height: '25px',
+                              // pt: '5px',
                               pl: '10px'
                             }
                           }}
@@ -279,9 +279,9 @@ const Settings: NextPage = () => {
                             display: 'flex',
                             alignItems: 'center',
                             '@media screen and (max-width: 480px)': {
-                              width: '36px',
-                              height: '35px',
-                              pt: '5px',
+                              width: '26px',
+                              height: '25px',
+                              // pt: '5px',
                               // pl: '10px'
                             }
                           }}
